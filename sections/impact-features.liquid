@@ -1,0 +1,632 @@
+{%- style -%}
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+   @font-face {
+     font-family: 'Noto_Sans_Condensed_bold';
+     src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+   }
+   .impact-section-{{ section.id }} {
+     background-color: {{ section.settings.bg_color }};
+     padding-top: {{ section.settings.padding_top }}px;
+     padding-bottom: {{ section.settings.padding_bottom }}px;
+     color: {{ section.settings.text_color }};
+     overflow: hidden;
+   }
+
+
+
+   /* Main Heading */
+   .impact-main-heading {
+     text-align: center;
+     color: {{ section.settings.heading_color }};
+     font-size: {{ section.settings.heading_size_desktop }}px;
+     font-weight: {{ section.settings.heading_weight }};
+     text-transform: {{ section.settings.heading_transform }};
+     margin-bottom: 6rem;
+     font-family: 'Noto_Sans_Condensed_bold';
+   }
+
+   /* Top Cycle Layout */
+   .impact-cycle-grid {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    
+     margin-bottom: 6rem;
+   }
+
+   .cycle-column {
+     display: flex;
+     flex-direction: column;
+     gap: 6rem;
+     flex: 1;
+   }
+
+   .cycle-center {
+     flex: 1.5;
+     text-align: center;
+   }
+
+   .cycle-center img {
+     max-width: 100%;
+     height: auto;
+     /* width: {{ section.settings.center_image_width }}px; */
+     object-fit: contain;
+   }
+
+   /* Cycle Items */
+   .cycle-item {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     position: relative;
+   }
+
+   .cycle-icon-wrapper{
+     width:100%;
+     max-width: {{ section.settings.icon_size }}px;
+     height:{{ section.settings.icon_size_height }}px;
+   }
+   .cycle-icon {
+     width:100%;
+     height:100%;
+     margin-bottom: 1rem;
+     object-fit: cover;
+   }
+
+   .cycle-text {
+     font-size: {{ section.settings.text_size_desktop }}px;
+     line-height: 1.4;
+     max-width: 250px;
+    font-family: 'Noto Sans', sans-serif;
+   }
+    .cycle-text p{
+      margin-top:5px !important;
+      line-height: 100%;
+    }
+   .cycle-text strong, .cycle-text b {
+     font-weight: 700;
+     color:{{section.settings.cycle-text_highlight_color }};
+     font-family: 'Noto Sans', sans-serif;
+   }
+
+   /* Arrows */
+   .cycle-arrow {
+     position: absolute;
+     width: 60px;
+     height: auto;
+     opacity: 0.6;
+   }
+
+   /* Positioning Arrows specific to the design */
+   .cycle-item-tl .cycle-arrow {
+      top: -25%;
+      right: -8%;
+      transform: rotate(15deg);
+     }
+   .cycle-item-bl .cycle-arrow {
+     top: 15%;
+     right: -10%;
+     transform: rotate(-15deg);
+    }
+   .cycle-item-tr .cycle-arrow {
+     top: -24%;
+     left: -40%;
+     transform: rotate(-15deg) scaleX(-1);
+   }
+   .cycle-item-br .cycle-arrow {
+     top: -8%;
+     left: -34%;
+     transform: rotate(15deg) scaleX(-1);
+   }
+
+   /* Bottom Cards Grid */
+   .impact-cards-grid {
+     display: grid;
+     grid-template-columns: repeat(4, 1fr);
+     gap: 4rem;
+   }
+
+   .impact-card {
+     background-color: {{ section.settings.card_bg_color }};
+     padding: 2.5rem 2rem;
+     border-radius: 12px;
+     text-align: center;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: flex-start;
+   }
+   .card-icon-wrapper .card-icon {
+    width:100%;
+    margin-bottom: 1.5rem;
+   }
+   .impact-card .card-icon {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     object-position:center;
+   }
+
+   .impact-card .card-text {
+     font-size: {{ section.settings.text_size_desktop }}px;
+     line-height: 1.5;
+   }
+
+   .hidden-on__desktop{
+    display: none;
+   }
+
+   /* Responsive Adjustments */
+   @media screen and (max-width: 1024px) {
+
+      .cycle-center img{
+        position: relative;
+        left: 26px;
+        max-width: 460px;
+      }
+
+      .hidden-on__desktop{
+        display: block;
+      }
+      .hidden-on__mobile{
+        display: none;
+      }
+     .impact-cycle-grid {
+       flex-direction: column;
+     }
+     .cycle-column {
+       flex-direction: row;
+       
+       width: 100%;
+       justify-content: space-around;
+     }
+     .cycle-arrow {
+       display: none; /* Hide complex arrows on smaller screens to keep it clean */
+     }
+     .impact-cards-grid {
+       grid-template-columns: repeat(2, 1fr);
+     }
+   }
+
+   @media screen and (max-width: 768px) {
+     .impact-main-heading {
+       font-size: {{ section.settings.heading_size_mobile }}px;
+     }
+     .cycle-text, .impact-card .card-text {
+       font-size: {{ section.settings.text_size_mobile }}px;
+     }
+     .cycle-column {
+       flex-direction: row;
+       align-items: center;
+     }
+     .impact-cards-grid {
+       grid-template-columns: 1fr;
+     }
+   }
+  @media screen and (max-width:425px){
+   .impact-main-heading {
+     margin-bottom: 3rem;
+    }
+   }
+{%- endstyle -%}
+
+<div class="impact-section-{{ section.id }}">
+  <div class="impact-container page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="impact-main-heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="impact-cycle-grid">
+      <div class="cycle-column">
+        <div class="cycle-item cycle-item-tl">
+          {%- if section.settings.tl_icon != blank -%}
+            <div class="cycle-icon-wrapper">
+              {{ section.settings.tl_icon | image_url: width: 200 | image_tag: class: 'cycle-icon' }}
+            </div>
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'cycle-icon placeholder-svg' }}
+          {%- endif -%}
+          <div class="cycle-text">{{ section.settings.tl_text }}</div>
+          {%- if section.settings.arrow_icon != blank -%}
+            {{ section.settings.arrow_icon | image_url: width: 100 | image_tag: class: 'cycle-arrow' }}
+          {%- endif -%}
+        </div>
+
+        <div class="cycle-item cycle-item-bl">
+          {%- if section.settings.bl_icon != blank -%}
+            <div class="cycle-icon-wrapper">
+              {{ section.settings.bl_icon | image_url: width: 200 | image_tag: class: 'cycle-icon' }}
+            </div>
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'cycle-icon placeholder-svg' }}
+          {%- endif -%}
+          <div class="cycle-text">{{ section.settings.bl_text }}</div>
+          {%- if section.settings.arrow_icon != blank -%}
+            {{ section.settings.arrow_icon | image_url: width: 100 | image_tag: class: 'cycle-arrow' }}
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="cycle-center {% if section.settings.center_image_mobile != blank %}hidden-on__mobile{% endif %}">
+        {%- if section.settings.center_image != blank -%}
+          {{ section.settings.center_image | image_url: width: 800 | image_tag: fetchpriority: 'high' }}
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.center_image_mobile != blank -%}
+        <div class="cycle-center hidden-on__desktop">
+            {{ section.settings.center_image_mobile | image_url: width: 800 | image_tag: fetchpriority: 'high' }}
+        </div>
+      {%- endif -%}
+
+      <div class="cycle-column">
+        <div class="cycle-item cycle-item-tr">
+          {%- if section.settings.tr_icon != blank -%}
+            <div class="cycle-icon-wrapper">
+              {{ section.settings.tr_icon | image_url: width: 200 | image_tag: class: 'cycle-icon' }}
+            </div>
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'cycle-icon placeholder-svg' }}
+          {%- endif -%}
+          <div class="cycle-text">{{ section.settings.tr_text }}</div>
+          {%- if section.settings.arrow_icon != blank -%}
+            {{ section.settings.arrow_icon | image_url: width: 100 | image_tag: class: 'cycle-arrow' }}
+          {%- endif -%}
+        </div>
+
+        <div class="cycle-item cycle-item-br">
+          {%- if section.settings.br_icon != blank -%}
+            <div class="cycle-icon-wrapper">
+              {{ section.settings.br_icon | image_url: width: 200 | image_tag: class: 'cycle-icon' }}
+            </div>
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'cycle-icon placeholder-svg' }}
+          {%- endif -%}
+          <div class="cycle-text">{{ section.settings.br_text }}</div>
+          {%- if section.settings.arrow_icon != blank -%}
+            {{ section.settings.arrow_icon | image_url: width: 100 | image_tag: class: 'cycle-arrow' }}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="impact-cards-grid">
+        {%- for block in section.blocks -%}
+          <div class="impact-card" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              <div class="card-icon-wrapper card-icon-wrapper-{{ block.id }} ">
+                {{ block.settings.icon | image_url: width: 200 | image_tag: class: 'card-icon' }}
+              </div>
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag: 'card-icon placeholder-svg' }}
+            {%- endif -%}
+            <div class="card-text">{{ block.settings.text }}</div>
+          </div>
+          <style>
+            .card-icon-wrapper-{{ block.id }} {
+              max-width:{{ block.settings.card_icon_size }}px;
+              height:{{block.settings.card_icon_height }}px;
+
+             }
+          </style>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Impact Features",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f4ede1"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "General Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Bottom Cards Background",
+      "default": "#eaddcc"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Typography Settings"
+    },
+    {
+      "type": "range",
+      "id": "text_size_desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Text Size (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_size_mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Text Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Main Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading Text",
+      "default": "EVERY BAG MAKES A BIG DIFFERENCE"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Size (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Size (Mobile)",
+      "default": 28
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "700", "label": "Bold" },
+        { "value": "900", "label": "Black" }
+      ],
+      "default": "900"
+    },
+    {
+      "type": "select",
+      "id": "heading_transform",
+      "label": "Text Transform",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "uppercase", "label": "Uppercase" },
+        { "value": "capitalize", "label": "Capitalize" }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "header",
+      "content": "Center Image (Product)"
+    },
+    {
+      "type": "image_picker",
+      "id": "center_image",
+      "label": "Center Bag Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "center_image_mobile",
+      "label": "Center Bag Image mobile"
+    },
+    {
+      "type": "range",
+      "id": "center_image_width",
+      "min": 200,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "label": "Desktop Image Width",
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Cycle Feature Images"
+    },
+    {
+      "type": "range",
+      "id": "arrow_icon_size",
+      "min": 30,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Top Cycle Arrow Icon Sizes",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 30,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Top Cycle Icon Sizes",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "icon_size_height",
+      "min": 30,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Top Cycle Icon Sizes",
+      "default": 55
+    },
+    {
+      "type": "image_picker",
+      "id": "arrow_icon",
+      "label": "Arrow Icon (Applied to all)",
+      "info": "Upload a curved arrow SVG or PNG. The code automatically rotates it for the corners."
+    },
+    {
+      "type": "header",
+      "content": "Top Left Feature"
+    },
+    {
+      "type": "image_picker",
+      "id": "tl_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "tl_text",
+      "label": "Text",
+      "default": "<p><strong>Eco-friendly</strong> protein from black soldier fly larvae</p>"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Left Feature"
+    },
+    {
+      "type": "image_picker",
+      "id": "bl_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "bl_text",
+      "label": "Text",
+      "default": "<p><strong>Recycles food waste</strong> to reduce landfill impact</p>"
+    },
+    {
+      "type": "header",
+      "content": "Top Right Feature"
+    },
+    {
+      "type": "image_picker",
+      "id": "tr_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "tr_text",
+      "label": "Text",
+      "default": "<p>Supports <strong>cleaner air</strong> by lowering methane output</p>"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Right Feature"
+    },
+    {
+      "type": "image_picker",
+      "id": "br_icon",
+      "label": "Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "br_text",
+      "label": "Text",
+      "default": "<p>Loved by nature and <strong>happy hens</strong></p>"
+    },
+    {
+      "type": "color",
+      "label": "Choose Highlight Color",
+      "id": "cycle-text_highlight_color",
+      "default": "#994E0E"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Cards Styling"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Feature Card",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Card Icon"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Card Text",
+          "default": "<p><strong>Feature Title</strong><br>Write a brief description here about why this feature matters to the customer.</p>"
+        },
+        {
+          "type": "range",
+          "id": "card_icon_size",
+          "min": 30,
+          "max": 150,
+          "step": 5,
+          "unit": "px",
+          "label": "Card Icon Width",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "card_icon_height",
+          "min": 30,
+          "max": 150,
+          "step": 5,
+          "unit": "px",
+          "label": "Card Icon Height",
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Impact Features",
+      "blocks": [{ "type": "card" }, { "type": "card" }, { "type": "card" }, { "type": "card" }]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,541 @@
+{{ 'chicken-nutrition-section.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .multi-species-section {
+    flex-direction: row !important;
+    width: 100% !important;
+    justify-content: space-around;
+  }
+</style>
+
+<section
+  class="chicken-section four-feature-product-section four-feature-product-section-{{section.id }}  multi-species-section--{{section.id }} "
+  style="background-color: {{ section.settings.bg_color }};"
+>
+  <div class="container page-width">
+    <div class="four-feature-text-content">
+      {% if section.settings.heading != blank %}
+        <span class="chicken-nutrition-heading rte">
+          {{ section.settings.heading }}
+        </span>
+      {% endif %}
+      {% if section.settings.subtext != blank %}
+        <span class="four-feature-text-pg">
+          {{ section.settings.subtext }}
+        </span>
+      {% endif %}
+    </div>
+
+    <div class="content-wrapper">
+      <div class="features left four-feature-product-icon multi-species-section">
+        {% for block in section.blocks %}
+          <div
+            class="feature"
+            {{ block.shopify_attributes }}
+          >
+            <div class="icon">
+              <img
+                src="{{ block.settings.icon | image_url }}"
+                alt="{{ block.settings.title | escape }}"
+                style="object-fit: {{ block.settings.image_fit }};"
+              >
+            </div>
+            <h4
+              style="
+                margin-top: {{ block.settings.margin_top }}px;
+                margin-bottom: {{ block.settings.margin_bottom }}px;
+              "
+            >
+              {{ block.settings.title }}
+            </h4>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    {% if section.settings.button_text != blank %}
+      <div class="btn-wrapper">
+        <a href="{{ section.settings.button_url }}" class="btn">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+   .btn-wrapper .btn{
+     font-family: "Noto Sans", sans-serif;
+   }
+
+   .four-feature-product-section .content-wrapper {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       gap: 10px;
+   }
+   .four-feature-product-icon {
+      width: 18%;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+     }
+     .four-feature-text-pg {
+      line-height:20px;
+    }
+    .four-feature-text-pg p{
+     color: black;
+     font-family: "Noto Sans", sans-serif;
+    }
+   .four-feature-product-section-{{section.id }} .chicken-nutrition-heading {
+        max-width: 800px;
+        margin: 0 auto 50px;
+        text-align: center;
+        font-size: {{ section.settings.heading_size }}px;
+        font-weight: {{ section.settings.heading_weight }};
+        color: {{ section.settings.heading_color }};
+        text-transform: {{ section.settings.heading_text_transform }};
+        line-height: 40px;
+   }
+
+   .four-feature-product-section-{{section.id }} .chicken-nutrition-heading strong {
+        color: {{ section.settings.highlight_color }};
+   }
+
+   /* LEFT + RIGHT unified */
+   .four-feature-product-section-{{section.id }} .features.left .feature,
+   .four-feature-product-section-{{section.id }} .features.right .feature {
+        text-align: {{ section.settings.text_align }};
+        align-items: {{ section.settings.alignment }};
+   }
+
+   /* Icon */
+   .four-feature-product-section-{{section.id }} .four-feature-product-icon .icon {
+        width: 100%;
+        max-width: {{ section.settings.icon_width }}px;
+        border-radius: {{section.settings.feature_img_radius }}px;
+        overflow: hidden;
+        height: {{ section.settings.icon_height }}px;
+   }
+
+   #shopify-section-{{ section.id }} .chicken-section .icon img {
+        width: 100%;
+        object-position: center;
+        height: 100%;
+        /* object-fit is now handled inline dynamically via block settings */
+   }
+
+   /* Title */
+   .four-feature-product-section-{{section.id }} .chicken-section .feature h4 {
+        font-size: {{ section.settings.title_size }}px;
+        font-weight: {{ section.settings.title_weight }};
+        color: {{ section.settings.title_color }};
+        text-transform: {{ section.settings.text_transform }};
+        margin-bottom: 0;
+   }
+
+   /* Text */
+   .four-feature-product-section-{{section.id }} .feature p {
+        font-size: {{ section.settings.text_size }}px;
+        color: #A65316;
+        text-align: {{ section.settings.text_align }};
+        line-height: 100%;
+        font-family: Noto_Sans_Condensed;
+        text-transform: uppercase;
+        font-weight: bold;
+   }
+
+   /* Center Image */
+   .four-feature-product-section-{{section.id }} .center-image {
+        width: 100%;
+        max-width: {{ section.settings.image_width }}px;
+   }
+
+   #shopify-section-{{ section.id }} .center-image img {
+        width: 100%;
+        object-fit: cover;
+        position: relative;
+        left: 52px;
+   }
+
+   .four-feature-product-section-{{section.id }} .btn {
+        background-color: {{ section.settings.btn_bg }};
+        color: {{ section.settings.btn_text }};
+   }
+
+   .four-feature-product-section-{{section.id }} .btn:hover {
+        background-color: {{ section.settings.btn_hover_bg }};
+        color: {{ section.settings.btn_hover_text }};
+   }
+
+   .four-feature-product-section-{{section.id }} .four-feature-text-content .four-feature-text-pg{
+       font-size: 18px;
+       color: {{ section.settings.subtext-color }};
+       margin-bottom: 5rem;
+       display: block;
+   }
+
+   #shopify-section-{{ section.id }} .four-feature-product-icon h4 p{
+    margin:0;
+    }
+
+   {% if section.settings.main_image == blank %}
+   #shopify-section-{{ section.id }} .four-feature-product-section .content-wrapper {
+       display: flex;
+       align-items: center;
+       justify-content: space-evenly !important;
+       width: 100%;
+   }
+   {% endif %}
+
+
+   /* =========================================
+       RESPONSIVE DESIGN LOGIC
+       ========================================= */
+
+   /* Tablet Layout (max-width: 990px) */
+   @media screen and (max-width: 990px) {
+        #shopify-section-{{ section.id }} .center-image{
+           max-width: 100% !important;
+         }
+      #shopify-section-{{ section.id }}  .center-image img {
+          max-width: {{ section.settings.image_width }}px;
+          left: 33px;
+        }
+      #shopify-section-{{ section.id }}  .four-feature-product-section .features {
+          width: 45%;
+        }
+   }
+
+   /* Mobile Layout (max-width: 768px) */
+   @media screen and (max-width: 768px) {
+      #shopify-section-{{ section.id }}  .chicken-nutrition-heading {
+          font-size: calc({{ section.settings.heading_size }}px * 0.75);
+        }
+     #shopify-section-{{ section.id }}  .four-feature-product-section .multi-species-section {
+         margin-bottom: 30px;
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+       }
+
+     #shopify-section-{{ section.id }} .chicken-nutrition-heading p{
+       font-size: 34px;
+     }
+   }
+
+   @media screen and (max-width:640px){
+     .multi-species-section{
+      flex-wrap:wrap;
+     }
+   }
+
+   @media screen and (max-width: 425px) {
+     #shopify-section-{{ section.id }}  .four-feature-product-section .features {
+          width: 100% !important;
+       }
+    #shopify-section-{{ section.id }}   .four-feature-product-icon .icon {
+           max-width: 100px;
+           height: 100px;
+       }
+    .multi-species-section{
+         gap:20px;
+     }
+   }
+
+   @media screen and (max-width:320px){
+    .multi-species-section .feature{
+         min-width: 100px !important;
+         max-width: 100px !important;
+     }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Multi Species",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Because your chickens <strong>DESERVE</strong> the same clean nutrition you do</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "<p>Pure Grubs naturally enhances your chickens’ nutrition from the inside out so every egg they lay reflects the clean lifestyle you believe in.</p>"
+    },
+    {
+      "type": "color",
+      "label": "Choose Subtext Color",
+      "id": "subtext-color"
+    },
+    {
+      "type": "select",
+      "id": "heading_text_transform",
+      "label": "Feature Title Text Transform",
+      "options": [
+        { "value": "none", "label": "Normal" },
+        { "value": "uppercase", "label": "UPPERCASE" },
+        { "value": "lowercase", "label": "lowercase" },
+        { "value": "capitalize", "label": "Capitalize" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "min": 20,
+      "max": 60,
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "900", "label": "Bolder" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#2b2b2b"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight Color",
+      "default": "#c96b2c"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Center Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Center Image Width",
+      "min": 150,
+      "max": 500,
+      "step": 10,
+      "default": 260
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Feature Title Size",
+      "min": 14,
+      "max": 30,
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Feature Title Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Bolder" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Feature Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "text_transform",
+      "label": "Feature Title Text Transform",
+      "options": [
+        { "value": "none", "label": "Normal" },
+        { "value": "uppercase", "label": "UPPERCASE" },
+        { "value": "lowercase", "label": "lowercase" },
+        { "value": "capitalize", "label": "Capitalize" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text Size",
+      "min": 12,
+      "max": 20,
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "icon_width",
+      "label": "Feature Image Width",
+      "min": 20,
+      "max": 200,
+      "step": 2,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "icon_height",
+      "label": "Feature Image Height",
+      "min": 20,
+      "max": 200,
+      "step": 2,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "feature_img_radius",
+      "label": "Feature Image Radius",
+      "min": 20,
+      "max": 200,
+      "step": 2,
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Feature Text Align (Both Sides)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Feature Content Alignment (Both Sides)",
+      "options": [
+        { "value": "flex-start", "label": "Start" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "End" }
+      ],
+      "default": "flex-end"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f3e6d7"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Button Background",
+      "default": "#a55a2a"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Button Hover Background",
+      "default": "#7a3e1c"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_text",
+      "label": "Button Hover Text",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "select",
+          "id": "image_fit",
+          "label": "Image Fit",
+          "options": [
+            { "value": "cover", "label": "Cover" },
+            { "value": "contain", "label": "Contain" },
+            { "value": "fill", "label": "Fill" },
+            { "value": "none", "label": "None" }
+          ],
+          "default": "cover"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "Title",
+          "default": "<p>Feature Title</p>"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Feature description here"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin Top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin Bottom",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0,
+          "unit": "px"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multi Species",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,352 @@
+<div id="images-columns-{{ section.id }}" class="img-columns">
+  <div class="img-columns__container page-width">
+    {% if section.settings.section_text != blank %}
+      <h2 class="img-columns__heading">
+        {{ section.settings.section_text }}
+      </h2>
+    {% endif %}
+
+    <div class="img-columns__grid">
+      {% for block in section.blocks %}
+        <div class="img-columns__item">
+          <div class="img-columns__image">
+            <img src="{{ block.settings.image | image_url }}" loading="lazy">
+          </div>
+
+          <div class="img-columns__text">
+            {{ block.settings.block_text }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+  @font-face {
+    font-family: 'Noto_Sans_Condensed_bold';
+    src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+  }
+
+  /* =========================
+     SECTION
+  ========================= */
+  #images-columns-{{section.id}}{
+    background-color: {{ section.settings.section_bg_color}};
+    padding-top: {{section.settings.padding_top }}px;
+    padding-bottom: {{section.settings.padding_bottom }}px;
+  }
+
+  /* =========================
+     HEADING
+  ========================= */
+  .img-columns__heading{
+    color: {{ section.settings.text_color }};
+    font-weight: {{ section.settings.text_weight }};
+    font-size: {{ section.settings.text_size }}px;
+    text-align: {{ section.settings.text_alignment }};
+    margin-bottom: 40px;
+    font-family: 'Noto_Sans_Condensed_bold';
+  }
+
+  /* =========================
+     GRID
+  ========================= */
+  .img-columns__grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  /* =========================
+     ITEM
+  ========================= */
+  .img-columns__item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    border: 1px solid {{ section.settings.border_color }};
+    padding: 30px 30px;
+    border-radius:{{ section.settings.border_radius }}px;
+    flex: 1 1 calc(33.33% - 30px);
+    max-width: calc(25.33% - 30px);
+    text-align: center;
+  }
+
+  /* =========================
+     IMAGE
+  ========================= */
+  {% for block in section.blocks %}
+    #images-columns-{{section.id}} .img-columns__item:nth-child({{ forloop.index }}) .img-columns__image{
+      width:100%;
+      max-width:{{ block.settings.image_width }}px;
+      height:{{ block.settings.image_height }}px;
+    }
+  {% endfor %}
+
+  .img-columns__image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+
+  /* =========================
+     TEXT
+  ========================= */
+  {% for block in section.blocks %}
+    #images-columns-{{section.id}} .img-columns__item:nth-child({{ forloop.index }}) .img-columns__text{
+      font-size:{{ block.settings.block_text_size}}px;
+      color:{{ block.settings.block_text_color }};
+      font-weight:{{ block.settings.block_text_weight }};
+      text-align:{{ block.settings.block_text_alignment }};
+      font-family: 'Noto Sans', sans-serif;
+      margin-top: 10px;
+    }
+  {% endfor %}
+
+  /* =========================
+     TABLET
+  ========================= */
+  @media (max-width: 1024px){
+
+    .img-columns__item{
+      flex: 1 1 calc(50% - 20px);
+      max-width: calc(50% - 20px);
+      padding: 18px;
+    }
+
+    .img-columns__heading{
+      font-size: calc({{ section.settings.text_size }}px * 0.85);
+    }
+
+  }
+
+  /* =========================
+     MOBILE
+  ========================= */
+  @media (max-width: 768px){
+
+    #images-columns-{{section.id}}{
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .img-columns__item{
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+
+    .img-columns__heading{
+      font-size: calc({{ section.settings.text_size }}px * 0.7);
+      margin-bottom: 25px;
+    }
+
+    {% for block in section.blocks %}
+      #images-columns-{{section.id}} .img-columns__item:nth-child({{ forloop.index }}) .img-columns__image{
+        height: auto;
+      }
+    {% endfor %}
+
+  }
+
+  /* =========================
+     SMALL MOBILE
+  ========================= */
+  @media (max-width: 480px){
+
+    .img-columns__heading{
+      font-size: calc({{ section.settings.text_size }}px * 0.6);
+    }
+
+    .img-columns__item{
+      padding: 15px;
+    }
+
+    .img-columns__text{
+      font-size: 14px !important;
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "images Column",
+
+  "settings": [
+    {
+      "type": "color",
+      "label": "Choose Section Background Color",
+      "id": "section_bg_color"
+    },
+    {
+      "type": "text",
+      "id": "section_text",
+      "label": "Section Text",
+      "default": "Your Heading Here"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Font Size",
+      "min": 12,
+      "max": 80,
+      "step": 2,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "text_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#0000005C"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 10,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "Image Width",
+          "min": 50,
+          "max": 500,
+          "step": 10,
+          "default": 200,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "image_height",
+          "label": "Image Height",
+          "min": 50,
+          "max": 500,
+          "step": 10,
+          "default": 200,
+          "unit": "px"
+        },
+
+        {
+          "type": "text",
+          "id": "block_text",
+          "label": "Text"
+        },
+        {
+          "type": "color",
+          "id": "block_text_color",
+          "label": "Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "block_text_size",
+          "label": "Font Size",
+          "min": 12,
+          "max": 40,
+          "step": 1,
+          "default": 16,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "block_text_weight",
+          "label": "Font Weight",
+          "options": [
+            { "value": "400", "label": "Normal" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semi Bold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "select",
+          "id": "block_text_alignment",
+          "label": "Text Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
+        }
+      ]
+    }
+  ],
+
+  "presets": [{ "name": "images Column" }]
+}
+{% endschema %}

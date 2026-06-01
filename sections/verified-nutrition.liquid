@@ -1,0 +1,410 @@
+{%- style -%}
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    @font-face {
+      font-family: 'Noto_Sans_Condensed_bold';
+      src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+    }
+    .section-{{ section.id }} {
+      background-color: {{ section.settings.bg_color }};
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+
+    .vn-main-heading {
+      text-align: {{ section.settings.heading_alignment }};
+      color: {{ section.settings.heading_color }};
+      font-size: {{ section.settings.heading_size }}px;
+      font-weight: {{ section.settings.heading_weight }};
+      margin-bottom: 8rem;
+      font-family: 'Noto_Sans_Condensed_bold';
+    }
+
+    .vn-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
+      row-gap: {{ section.settings.row_gap }}px;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      place-items: center;
+    }
+
+    /* Responsive Grid Adjustments */
+    @media screen and (max-width: 768px) {
+      .vn-grid {
+        row-gap: 20px;
+      }
+    .vn-grid {
+      column-gap: 20px;
+      max-width: 100%;
+   }
+      .vn-main-heading {
+        font-size: clamp(24px, 5vw, {{ section.settings.heading_size }}px);
+      }
+    }
+
+        @media screen and (max-width: 600px){
+        .vn-grid {
+          grid-template-columns: 1fr;
+          row-gap: 0px;
+        }
+        .vn-main-heading{
+          margin-bottom: 4rem !important;
+          font-size: 34px !important;
+          line-height: 1 !important;
+        } 
+
+         .section-{{ section.id }} {
+          
+            padding-top: 20px;
+            padding-bottom: 20px;
+          }
+    }
+
+    /* Block Specific Styling Generation */
+    {%- for block in section.blocks -%}
+      #block-{{ block.id }} {
+        text-align: {{ block.settings.text_alignment }};
+      }
+       .vn-card-{{ block.id }}{
+        width: 100%;
+        max-width:{{ block.settings.card-width }}px
+      }
+      #block-{{ block.id }} .vn-image-wrapper{
+         width: 100%;
+         height: {{ block.settings.image_height }}px;
+         border-radius: {{ block.settings.border_radius }}px;
+         display: block;
+         margin-bottom: 1.5rem;
+         overflow:hidden;
+
+      }
+      #block-{{ block.id }} .vn-image {
+        width: 100%;
+        height:100%;
+        object-fit: {{ block.settings.image_fit }};
+        object-position:center;
+
+      }
+
+      #block-{{ block.id }} .vn-title {
+        color: {{ block.settings.title_color }};
+        font-size: {{ block.settings.title_size }}px;
+        font-weight: {{ block.settings.title_weight }};
+        margin-bottom: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-family: 'Noto_Sans_Condensed_bold';
+      }
+
+      #block-{{ block.id }} .vn-text {
+        color: {{ block.settings.text_color }};
+        font-size: {{ block.settings.text_size }}px;
+        font-weight: {{ block.settings.text_weight }};
+        line-height: 24px;
+        margin: 0;
+        padding: 0 20px;
+        font-family: Noto_Sans_Condensed;
+      }
+       #block-{{ block.id }} .vn-text p{
+        /* margin:0; */
+        margin-top: 0.5rem;
+        min-height: 96px;
+        margin-bottom: 0;
+       }
+    {%- endfor -%}
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}">
+  <div class="vn-container page-width">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="vn-main-heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="vn-grid">
+      {%- for block in section.blocks -%}
+        <div id="block-{{ block.id }}" class="vn-card vn-card-{{ block.id }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="vn-image-wrapper">
+              {{ block.settings.image | image_url: width: 800 | image_tag: class: 'vn-image', loading: 'lazy' }}
+            </div>
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'vn-image placeholder-svg' }}
+          {%- endif -%}
+
+          {%- if block.settings.title != blank -%}
+            <h3 class="vn-title">{{ block.settings.title }}</h3>
+          {%- endif -%}
+
+          {%- if block.settings.text != blank -%}
+            <div class="vn-text">{{ block.settings.text }}</div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Feature Grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#2A2118"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Grid Settings"
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Column Gap",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "row_gap",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Row Gap",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading Text",
+      "default": "VERIFIED NUTRITION. VISIBLE RESULTS."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#EFE6DB"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "900", "label": "Black" }
+      ],
+      "default": "900"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Card",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Card Text Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "header",
+          "content": "Image Settings"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "card-width",
+          "min": 100,
+          "max": 500,
+          "step": 10,
+          "unit": "px",
+          "label": "card-width",
+          "default": 350
+        },
+        {
+          "type": "range",
+          "id": "image_height",
+          "min": 100,
+          "max": 500,
+          "step": 10,
+          "unit": "px",
+          "label": "Image Height",
+          "default": 250
+        },
+        {
+          "type": "select",
+          "id": "image_fit",
+          "label": "Image Fit Behavior",
+          "options": [
+            { "value": "cover", "label": "Cover (Fills area, crops if needed)" },
+            { "value": "contain", "label": "Contain (Shows full image, adds space)" },
+            { "value": "fill", "label": "Fill (Stretches image)" }
+          ],
+          "default": "cover"
+        },
+        {
+          "type": "range",
+          "id": "border_radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "px",
+          "label": "Border Radius",
+          "default": 12
+        },
+        {
+          "type": "header",
+          "content": "Title Settings"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "STRONGER EGGSHELLS"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#D19C4A"
+        },
+        {
+          "type": "range",
+          "id": "title_size",
+          "min": 14,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "label": "Title Size",
+          "default": 18
+        },
+        {
+          "type": "select",
+          "id": "title_weight",
+          "label": "Title Font Weight",
+          "options": [
+            { "value": "400", "label": "Normal" },
+            { "value": "600", "label": "Semi Bold" },
+            { "value": "700", "label": "Bold" },
+            { "value": "900", "label": "Black" }
+          ],
+          "default": "700"
+        },
+        {
+          "type": "header",
+          "content": "Paragraph Settings"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Packed with up to 50% more calcium than mealworms for tougher, healthier eggs.</p>"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#EFE6DB"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "label": "Text Size",
+          "default": 16
+        },
+        {
+          "type": "select",
+          "id": "text_weight",
+          "label": "Text Font Weight",
+          "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "600", "label": "Semi Bold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "400"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Grid",
+      "blocks": [{ "type": "feature" }, { "type": "feature" }, { "type": "feature" }, { "type": "feature" }]
+    }
+  ]
+}
+{% endschema %}

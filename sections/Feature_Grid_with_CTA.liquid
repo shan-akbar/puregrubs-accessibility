@@ -1,0 +1,355 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+     @font-face {
+       font-family: 'Noto_Sans_Condensed_bold';
+       src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+     }
+  .feature-grid-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding: 70px 0;
+    font-family: inherit;
+    text-align: center;
+  }
+
+
+
+  /* Heading Styles */
+  .feature-heading-{{ section.id }} {
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: {{ section.settings.heading_weight }};
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    font-family: 'Noto_Sans_Condensed_bold';
+  }
+
+  /* Grid Layout */
+  .feature-row-{{ section.id }} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 50px;
+  }
+
+  .feature-item-{{ section.id }} {
+    flex: 1;
+    min-width: 180px;
+    max-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature-image-wrapper-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .feature-item-text-{{ section.id }} {
+    color: {{ section.settings.feature_text_color }};
+    font-size: {{ section.settings.feature_text_size }}px;
+    font-weight: {{ section.settings.feature_text_weight }};
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.3;
+    font-family: 'Noto Sans', sans-serif;
+  }
+
+  /* Description Styles */
+  .feature-desc-{{ section.id }} {
+    color: {{ section.settings.desc_color }};
+    font-size: {{ section.settings.desc_size }}px;
+    font-weight: {{ section.settings.desc_weight }};
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+    font-family: 'Noto Sans', sans-serif;
+  }
+
+  /* Button Styles */
+  .feature-btn-{{ section.id }} {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 40px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    color: {{ section.settings.btn_color }};
+    background-color: {{ section.settings.btn_bg_color }};
+    font-weight: {{ section.settings.btn_weight }};
+    font-size: 14px; /* standard legible size */
+    margin-top:2rem;
+    font-family: 'Noto Sans', sans-serif;
+  }
+
+  .feature-btn-{{ section.id }}:hover {
+    color: {{ section.settings.btn_hover_color }};
+    background-color: {{ section.settings.btn_hover_bg_color }};
+  }
+
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .feature-row-{{ section.id }} {
+      gap: 30px;
+    }
+    .feature-item-{{ section.id }} {
+      min-width: 45%; /* Two per row on mobile */
+    }
+  }
+</style>
+
+<div class="feature-grid-section-{{ section.id }}">
+  <div class="feature-grid-container-{{ section.id }}">
+    {% if section.settings.heading != blank %}
+      <h2 class="feature-heading-{{ section.id }}">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="feature-row-{{ section.id }}">
+      {% for block in section.blocks %}
+        <div class="feature-item-{{ section.id }}" {{ block.shopify_attributes }}>
+          <div class="feature-image-wrapper-{{ section.id }}">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | img_url: 'master' }}"
+                alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+                style="width: {{ block.settings.image_width }}px; max-width: 100%; height: auto;"
+                loading="lazy"
+              >
+            {% else %}
+              <div style="width: {{ block.settings.image_width }}px; aspect-ratio: 1; background: #e5e5e5; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% if block.settings.title != blank %}
+            <h3 class="feature-item-text-{{ section.id }}">{{ block.settings.title }}</h3>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.description != blank %}
+      <div class="feature-desc-{{ section.id }}">
+        {{ section.settings.description }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.btn_text != blank and section.settings.btn_link != blank %}
+      <a href="{{ section.settings.btn_link }}" class="feature-btn-{{ section.id }}">
+        {{ section.settings.btn_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Feature Grid with CTA",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f4ede1"
+    },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>BOOST YOUR HENS' PERFORMANCE WITH OUR SUPER LARVAE </p>"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#6b5e48"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "bold", "label": "Bold" },
+        { "value": "900", "label": "Black" }
+      ],
+      "default": "bold"
+    },
+    {
+      "type": "header",
+      "content": "Feature Item Text Settings"
+    },
+    {
+      "type": "color",
+      "id": "feature_text_color",
+      "label": "Text Color",
+      "default": "#6b5e48"
+    },
+    {
+      "type": "range",
+      "id": "feature_text_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "feature_text_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "bold", "label": "Bold" },
+        { "value": "900", "label": "Black" }
+      ],
+      "default": "bold"
+    },
+    {
+      "type": "header",
+      "content": "Description Text Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description Paragraph",
+      "default": "<p>High-protein (40%) and calcium-rich (4%) black soldier fly larvae to boost hen health and eggshell strength.<br>Non-GMO, additive-free treats loved by chickens, ducks, birds, and other pets.</p>"
+    },
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Description Color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "desc_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Font Size",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "desc_weight",
+      "label": "Description Font Weight",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "bold", "label": "Bold" }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background Color",
+      "default": "#a65c26"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_color",
+      "label": "Button Hover Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg_color",
+      "label": "Button Hover Background Color",
+      "default": "#8a4a1c"
+    },
+    {
+      "type": "select",
+      "id": "btn_weight",
+      "label": "Button Font Weight",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "bold", "label": "Bold" }
+      ],
+      "default": "bold"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Feature Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 50,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "label": "Image Width",
+          "default": 140
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature Text",
+          "default": "ESSENTIAL FATS"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Grid with CTA",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "ESSENTIAL FATS" } },
+        { "type": "feature", "settings": { "title": "PROTEINS" } },
+        { "type": "feature", "settings": { "title": "B-VITAMINS" } },
+        { "type": "feature", "settings": { "title": "IRON & ZINC" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

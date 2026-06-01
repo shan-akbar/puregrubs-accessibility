@@ -1,0 +1,502 @@
+{% style %}
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+   @font-face {
+     font-family: 'Noto_Sans_Condensed_bold';
+     src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+   }
+    .custom-newsletter-{{ section.id }} {
+      background-color: {{ section.settings.section_bg_color }};
+      display: flex;
+      justify-content: center;
+      font-family: inherit;
+      box-sizing: border-box;
+
+    }
+
+    .custom-newsletter-container-{{ section.id }} {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      position:relative;
+    }
+
+    .custom-newsletter-content-{{ section.id }} {
+      flex: 1;
+      min-width: 300px;
+      text-align: {{ section.settings.heading_alignment }};
+    }
+
+    .custom-newsletter-heading-{{ section.id }} {
+      font-size: {{ section.settings.heading_font_size }}px;
+      font-weight: {{ section.settings.heading_font_weight }};
+      color: {{ section.settings.heading_color }};
+      margin-bottom: 12px;
+      line-height: 1.3;
+      text-align: {{ section.settings.heading_alignment }};
+      font-family: 'Noto Sans', sans-serif;
+      max-width: 500px;
+    }
+
+    .custom-newsletter-subtext-{{ section.id }} {
+      font-size: {{ section.settings.subtext_font_size }}px;
+      font-weight: {{ section.settings.subtext_font_weight }};
+      color: {{ section.settings.subtext_color }};
+      margin-bottom: 25px;
+      text-align: {{ section.settings.subtext_alignment }};
+       font-family: 'Noto Sans', sans-serif;
+    }
+
+    .custom-newsletter-form-{{ section.id }} {
+      display: flex;
+      gap: 15px;
+      align-items: stretch;
+      justify-content: {% if section.settings.heading_alignment == 'center' %}center{% elsif section.settings.heading_alignment == 'right' %}flex-end{% else %}flex-start{% endif %};
+      flex-wrap: wrap;
+    }
+
+    .custom-newsletter-input-{{ section.id }} {
+      flex: 1;
+      min-width: 180px;
+      background-color: {{ section.settings.input_bg_color }};
+      color: {{ section.settings.input_text_color }};
+      padding: 14px 10px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      outline: none;
+       font-family: 'Noto Sans', sans-serif;
+    }
+
+    .custom-newsletter-input-{{ section.id }}::placeholder {
+      color: {{ section.settings.input_text_color | color_modify: 'alpha', 0.6 }};
+    }
+
+    .custom-newsletter-btn-{{ section.id }} {
+      background-color: {{ section.settings.button_bg_color }};
+      color: {{ section.settings.button_text_color }};
+      padding: 14px 28px;
+      border: none;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+       font-family: 'Noto Sans', sans-serif;
+    }
+
+    .custom-newsletter-btn-{{ section.id }}:hover {
+      background-color: {{ section.settings.button_hover_bg }};
+      color: {{ section.settings.button_hover_text }};
+    }
+
+   .custom-newsletter-image-parent-{{ section.id }} {
+      position: relative;
+      width: {{ section.settings.image_width }}%;
+      flex-shrink: 0; /* Flex rules go here on the in-flow parent! */
+      min-height: 350px; /* Crucial: gives the parent height so the flex container doesn't collapse */
+    }
+
+    .custom-newsletter-image-wrapper-{{ section.id }} {
+      position: absolute;
+      top: -25px;/* Or top: 50%; transform: translateY(-50%); depending on exact vertical placement */
+      right: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .custom-newsletter-image-{{ section.id }} {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.1));
+    }
+
+    /* Responsive adjustments */
+  @media (max-width: 768px) {
+      .custom-newsletter-{{ section.id }} {
+        padding: 30px 0;
+        padding-bottom:60px;
+      }
+
+      .custom-newsletter-container-{{ section.id }} {
+        flex-direction: column;
+        text-align: center;
+        gap:0;
+      }
+
+      .custom-newsletter-content-{{ section.id }} {
+        text-align: center;
+      }
+
+      .custom-newsletter-heading-{{ section.id }},
+      .custom-newsletter-subtext-{{ section.id }} {
+        text-align: center;
+      }
+
+      .custom-newsletter-form-{{ section.id }} {
+        flex-direction: column;
+        justify-content: center;
+        gap:20px;
+      }
+
+     .custom-newsletter-image-parent-{{ section.id }} {
+         width: 90%;
+         margin-top: -20px;
+         order: -1;
+         height: auto;
+         min-height: auto;
+      }
+
+      .custom-newsletter-image-wrapper-{{ section.id }} {
+        position: relative; /* Often best to revert to relative on mobile for normal flow */
+        bottom: auto;
+        right: auto;
+      }
+
+       .custom-newsletter-heading-margin{
+         margin-top:0;
+       }
+       .custom-newsletter-heading-margin p{
+         margin-top:0;
+       }
+    }
+{% endstyle %}
+
+<div class="custom-newsletter-{{ section.id }} ">
+  <div class="custom-newsletter-container-{{ section.id }} page-width">
+    <div class="custom-newsletter-content-{{ section.id }}">
+      {% if section.settings.main_heading != blank %}
+        <h2 class="custom-newsletter-heading-{{ section.id }} custom-newsletter-heading-margin">
+          {{ section.settings.main_heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.sub_text != blank %}
+        <p class="custom-newsletter-subtext-{{ section.id }}">{{ section.settings.sub_text }}</p>
+      {% endif %}
+      <p class="form-message"></p>
+      <form class="custom-newsletter-form-{{ section.id }}">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+
+        <input
+          type="text"
+          name="contact[first_name]"
+          placeholder="{{ section.settings.placeholder_name }}"
+          class="custom-newsletter-input-{{ section.id }}"
+        >
+
+        <input
+          type="email"
+          name="contact[email]"
+          placeholder="{{ section.settings.placeholder_email }}"
+          class="custom-newsletter-input-{{ section.id }}"
+          required
+        >
+
+        <button type="submit" class="custom-newsletter-btn-{{ section.id }}">
+          {{ section.settings.button_text }}
+        </button>
+      </form>
+    </div>
+    <div class="custom-newsletter-image-parent-{{ section.id }}">
+      {% if section.settings.image != blank %}
+        <div class="custom-newsletter-image-wrapper-{{ section.id }}">
+          <img
+            src="{{ section.settings.image | img_url: '800x' }}"
+            alt="{{ section.settings.image.alt | escape }}"
+            class="custom-newsletter-image-{{ section.id }}"
+            loading="lazy"
+          >
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.custom-newsletter-form-{{ section.id }}');
+    const messageEl = document.querySelector('.form-message');
+
+    if (!form || !messageEl) return;
+
+    let hideTimer;
+
+    function showMessage(text, type = 'success') {
+      // Clear previous timer
+      if (hideTimer) clearTimeout(hideTimer);
+
+      messageEl.textContent = text;
+
+      // Set color based on type
+      messageEl.style.color = type === 'success' ? 'green' : 'red';
+      messageEl.style.display = 'block';
+
+      // Auto hide after 5s
+      hideTimer = setTimeout(() => {
+        messageEl.style.display = 'none';
+        messageEl.textContent = '';
+      }, 5000);
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const email = form.querySelector('input[name="contact[email]"]').value;
+      const firstName = form.querySelector('input[name="contact[first_name]"]').value;
+
+      try {
+        const res = await fetch('https://a.klaviyo.com/client/subscriptions/?company_id=XVtQhW', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            revision: '2023-10-15',
+          },
+          body: JSON.stringify({
+            data: {
+              type: 'subscription',
+              attributes: {
+                profile: {
+                  data: {
+                    type: 'profile',
+                    attributes: {
+                      email: email,
+                      first_name: firstName,
+                    },
+                  },
+                },
+              },
+              relationships: {
+                list: {
+                  data: {
+                    type: 'list',
+                    id: 'WPgvDj',
+                  },
+                },
+              },
+            },
+          }),
+        });
+
+        if (res.ok) {
+          showMessage('Subscribed successfully! 🎉', 'success');
+          form.reset();
+        } else {
+          const errorText = await res.text();
+          console.error(errorText);
+          showMessage('Subscription failed. Please try again.', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        showMessage('Something went wrong. Try again.', 'error');
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom Newsletter Block",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General Settings"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Background Color",
+      "default": "#e6ceb3"
+    },
+    {
+      "type": "header",
+      "content": "Main Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "main_heading",
+      "label": "Heading Text",
+      "default": "<p>Join us and get the tools you need for a healthier, more productive farm.</p>"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 16,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi-Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "900", "label": "Black" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Text Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "sub_text",
+      "label": "Subtext",
+      "default": "Join +20,000 subscribers"
+    },
+    {
+      "type": "range",
+      "id": "subtext_font_size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "subtext_font_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi-Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Text Color",
+      "default": "#7a6b5d"
+    },
+    {
+      "type": "select",
+      "id": "subtext_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Input Fields"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_name",
+      "label": "Name Placeholder",
+      "default": "First name"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_email",
+      "label": "Email Placeholder",
+      "default": "Email"
+    },
+    {
+      "type": "color",
+      "id": "input_bg_color",
+      "label": "Input Background",
+      "default": "#f4ebd8"
+    },
+    {
+      "type": "color",
+      "id": "input_text_color",
+      "label": "Input Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Submit Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "JOIN FOR FREE"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Background Color",
+      "default": "#9e5320"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Hover Background Color",
+      "default": "#7a3f18"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text",
+      "label": "Hover Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "%",
+      "label": "Image Desktop Width",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Newsletter Block",
+      "category": "Promotional"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,605 @@
+<section
+  class="custom-faq-section custom-faq-{{ section.id }}"
+  style="background-color: {{ section.settings.section_bg_color }};"
+>
+  <div class="page-width faq-container">
+    {% if section.settings.heading_text != blank %}
+      <h2 class="faq-main-heading">{{ section.settings.heading_text }}</h2>
+    {% endif %}
+
+    <div class="faq-list">
+      {% for block in section.blocks %}
+        {%- assign is_hidden = false -%}
+        {%- if section.settings.enable_more_less and forloop.index > 4 -%}
+          {%- assign is_hidden = true -%}
+        {%- endif -%}
+
+        <div 
+          class="faq-item {% if is_hidden %}faq-item--hidden{% endif %}" 
+          {{ block.shopify_attributes }}
+          {% if is_hidden %}style="display: none;"{% endif %}
+        >
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-{{ block.id }}">
+            <span class="faq-icon">
+              {% if section.settings.icon_image != blank %}
+                <img src="{{ section.settings.icon_image | image_url }}" alt="Toggle" class="custom-icon">
+              {% else %}
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="default-icon"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              {% endif %}
+            </span>
+            <span class="faq-question-text">{{ block.settings.question }}</span>
+          </button>
+          <div class="faq-answer" id="faq-answer-{{ block.id }}">
+            <div class="faq-answer-content">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.enable_more_less and section.blocks.size > 4 %}
+        <div class="faq-more-btn-wrapper">
+            <button type="button" class="faq-more-less-toggle" 
+                    data-more="{{ section.settings.more_text }}" 
+                    data-less="{{ section.settings.less_text }}">
+                {{ section.settings.more_text }}
+            </button>
+        </div>
+    {% endif %}
+
+    {% if section.settings.btn_text != blank %}
+      <div class="faq-btn-wrapper">
+        <a href="{{ section.settings.btn_url }}" class="faq-action-btn">
+          {{ section.settings.btn_text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+  @font-face {
+    font-family: 'Noto_Sans_Condensed_bold';
+    src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+  }
+
+  /* Base Section Styles */
+  .custom-faq-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .custom-faq-{{ section.id }} .faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Main Heading */
+  .custom-faq-{{ section.id }} .faq-main-heading {
+    text-align: {{ section.settings.heading_alignment }};
+    font-size: {{ section.settings.heading_font_size }}px;
+    font-weight: {{ section.settings.heading_font_weight }};
+    color: {{ section.settings.heading_color }};
+    text-transform: {{ section.settings.heading_transform }};
+    margin-bottom: 30px;
+    font-family: 'Noto_Sans_Condensed_bold';
+  }
+
+  /* FAQ List & Items */
+  .custom-faq-{{ section.id }} .faq-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0 14px;
+  }
+
+  .custom-faq-{{ section.id }} .faq-item {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  /* More/Less Toggle Styling */
+  .faq-more-btn-wrapper {
+    text-align: center;
+    margin-top: 20px;
+  }
+  .faq-more-less-toggle {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+    color: {{ section.settings.question_color }};
+    font-family: 'Noto Sans', sans-serif;
+  }
+
+  /* Question Button */
+  .custom-faq-{{ section.id }} .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    padding: 24px 0;
+    cursor: pointer;
+    text-align: left;
+    gap: 16px;
+  }
+
+  .custom-faq-{{ section.id }} .faq-question-text {
+    font-size: {{ section.settings.question_font_size }}px;
+    font-weight: {{ section.settings.question_font_weight }};
+    color: {{ section.settings.question_color }};
+    line-height: 38px;
+    font-family: 'Noto Sans', sans-serif;
+  }
+
+  /* Icon Handling */
+  .custom-faq-{{ section.id }} .faq-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: {{ section.settings.icon_width }}px;
+    height: {{ section.settings.icon_height }}px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+
+  .custom-faq-{{ section.id }} .faq-icon img,
+  .custom-faq-{{ section.id }} .faq-icon svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    color: {{ section.settings.question_color }};
+  }
+
+  .custom-faq-{{ section.id }} .faq-item.is-active .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .custom-faq-{{ section.id }} .faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
+  }
+
+  .custom-faq-{{ section.id }} .faq-item.is-active .faq-answer {
+    grid-template-rows: 1fr;
+  }
+
+  .custom-faq-{{ section.id }} .faq-answer-content {
+    min-height: 0;
+    overflow: hidden;
+    font-size: {{ section.settings.answer_font_size }}px;
+    font-weight: {{ section.settings.answer_font_weight }};
+    color: {{ section.settings.answer_color }};
+    line-height: 38px;
+    font-family: 'Noto Sans', sans-serif;
+    padding-left: calc({{ section.settings.icon_width }}px + 16px);
+  }
+
+  .custom-faq-{{ section.id }} .faq-answer-content p {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .custom-faq-{{ section.id }} .faq-answer-content p:last-child {
+    margin-bottom: 24px;
+  }
+
+  .custom-faq-{{ section.id }} .faq-btn-wrapper {
+    display: flex;
+    justify-content: {{ section.settings.btn_alignment }};
+    margin-top: {{ section.settings.btn_margin_top }}px;
+    margin-bottom: {{ section.settings.btn_margin_bottom }}px;
+  }
+
+  .custom-faq-{{ section.id }} .faq-action-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background-color: {{ section.settings.btn_bg_color }};
+    border: 1px solid {{ section.settings.btn_border_color }};
+    color: {{ section.settings.btn_text_color }};
+    font-size: {{ section.settings.btn_font_size }}px;
+    font-weight: {{ section.settings.btn_font_weight }};
+  }
+
+  .custom-faq-{{ section.id }} .faq-action-btn:hover {
+    opacity: 0.8;
+  }
+
+  @media screen and (max-width: 768px) {
+    .custom-faq-{{ section.id }} .faq-main-heading {
+      font-size: calc({{ section.settings.heading_font_size }}px * 0.8);
+    }
+    .custom-faq-{{ section.id }} .faq-question-text {
+      font-size: calc({{ section.settings.question_font_size }}px * 0.9);
+    }
+  }
+
+  @media screen and (max-width:425px){
+    .custom-faq-{{ section.id }} .faq-question-text {
+       line-height: 25px;
+    }
+    .custom-faq-{{ section.id }} .faq-answer-content {
+       line-height: 25px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const section = document.querySelector('.custom-faq-{{ section.id }}');
+    if (!section) return;
+
+    // Accordion Toggle
+    const questions = section.querySelectorAll('.faq-question');
+    questions.forEach((question) => {
+      question.addEventListener('click', function () {
+        const item = this.closest('.faq-item');
+        const isActive = item.classList.contains('is-active');
+
+        section.querySelectorAll('.faq-item').forEach((otherItem) => {
+          otherItem.classList.remove('is-active');
+          otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isActive) {
+          item.classList.add('is-active');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // More/Less Toggle
+    const moreLessBtn = section.querySelector('.faq-more-less-toggle');
+    if (moreLessBtn) {
+      moreLessBtn.addEventListener('click', function() {
+        const hiddenItems = section.querySelectorAll('.faq-item--hidden');
+        const isExpanding = this.innerText === this.getAttribute('data-more');
+        
+        hiddenItems.forEach(item => {
+          item.style.display = isExpanding ? 'block' : 'none';
+        });
+
+        this.innerText = isExpanding ? this.getAttribute('data-less') : this.getAttribute('data-more');
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom FAQ Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_more_less",
+      "label": "Enable More/Less Button",
+      "default": true,
+      "info": "Appears if there are more than 4 items"
+    },
+    {
+      "type": "text",
+      "id": "more_text",
+      "label": "More Button Text",
+      "default": "+ View More"
+    },
+    {
+      "type": "text",
+      "id": "less_text",
+      "label": "Less Button Text",
+      "default": "- View Less"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Background Color",
+      "default": "#f4ede1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Main Heading",
+      "default": "FAQ"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#6b5d4a"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 36
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi-Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "900", "label": "Black" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "select",
+      "id": "heading_transform",
+      "label": "Text Transform",
+      "options": [
+        { "value": "none", "label": "Normal" },
+        { "value": "uppercase", "label": "Uppercase" },
+        { "value": "lowercase", "label": "Lowercase" }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Question Settings"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question Color",
+      "default": "#4a4a4a"
+    },
+    {
+      "type": "range",
+      "id": "question_font_size",
+      "min": 14,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "question_font_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "header",
+      "content": "Answer Settings"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer Color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "answer_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "answer_font_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "header",
+      "content": "Accordion Icon Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Custom Icon Image",
+      "info": "Leave blank to use default SVG plus icon"
+    },
+    {
+      "type": "range",
+      "id": "icon_width",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Icon Width",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "icon_height",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Icon Height",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Action Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Name (Text)",
+      "default": "CHECK OUR FAQ SESSION"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "select",
+      "id": "btn_alignment",
+      "label": "Button Alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Border Color",
+      "default": "#b0a597"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Text Color",
+      "default": "#4a4a4a"
+    },
+    {
+      "type": "range",
+      "id": "btn_font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "btn_font_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi-Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "btn_margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Spacing from Top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "btn_margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Spacing from Bottom",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What benefits do Black Soldier Fly Larvae provide for my chickens?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Black Soldier Fly Larvae are a nutrient-dense food source...</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom FAQ Section",
+      "blocks": [{ "type": "faq_item" }, { "type": "faq_item" }, { "type": "faq_item" }]
+    }
+  ]
+}
+{% endschema %}

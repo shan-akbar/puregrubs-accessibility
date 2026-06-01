@@ -1,0 +1,363 @@
+{{ 'triple-product-showcase-pro.css' | asset_url | stylesheet_tag }}
+<style>
+    #triple-product-section{
+      background-color:{{ section.settings.triple-product-bg-color }};
+      padding:40px 0;
+    }
+
+    #triple-product-section .section-heading{
+        margin:0;
+        margin-bottom:20px;
+    }
+
+  .logo-item img {
+    width:100%;
+    object-fit:cover;
+    object-position:center;
+    display: block;
+  }
+
+  @media(max-width: 768px){
+    #triple-product-section .section-heading{
+      text-align: center !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logo-bar {
+      gap: 10px;
+    }
+  }
+</style>
+<div id="triple-product-section">
+  <div class="page-width">
+    {% comment %} section 1  {% endcomment %}
+    {% if section.settings.heading_text != blank %}
+      <h2
+        class="section-heading"
+        style="
+          color: {{ section.settings.heading_color }};
+          font-size: {{ section.settings.heading_size }}px;
+          font-weight: {{ section.settings.heading_weight }};
+          text-align: {{ section.settings.heading_align }};
+        "
+      >
+        {{ section.settings.heading_text }}
+      </h2>
+    {% endif %}
+    {% comment %} section 2 {% endcomment %}
+    <div class="logo-bar">
+      {% assign min_width = 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'logo_item' %}
+          {% if block.settings.logo %}
+            <div
+              class="logo-item"
+              {{ block.shopify_attributes }}
+            >
+              <img
+                style="width:100%;max-width: {{ block.settings.logo_width }}px;"
+                src="{{ block.settings.logo | img_url: '200x' }}"
+              >
+            </div>
+            {% if block.settings.logo_width > min_width %}
+              {% assign min_width = block.settings.logo_width %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      <style>
+        .logo-item{
+          display: flex;
+          min-width: {{ min_width }}px;
+          justify-content: center;
+        }
+
+        @media(max-width: 550px){
+          .logo-item{
+            min-width: unset !important;
+          }
+        }
+      </style>
+    </div>
+    {% comment %} section 2 {% endcomment %}
+    <div class="triple-product-wrapper ">
+      <!-- LEFT SIDE -->
+      <div class="left-side">
+        {% for block in section.blocks %}
+          {% if block.type == 'left_property' %}
+            <style>
+              .{{ block.id }}_text {
+                /* Fallback to regular text color, or use highlight if it exists */
+                {% if block.settings.text_highlight_color != blank %}
+                  color: {{ block.settings.text_highlight_color }};
+                {% else %}
+                  color: {{ block.settings.text_color }};
+                {% endif %}
+
+                {%- if block.settings.text_heighlight_bg_color !=blank -%}
+                  background-color:{{ block.settings.text_heighlight_bg_color }};
+                  padding: 4px 4px;
+                  border-radius: 5px;
+                  font-weight: 700;
+                {%- endif -%}
+                font-size: {{ block.settings.font_size }}px;
+                font-weight: {{ block.settings.font_weight }};
+              }
+            </style>
+
+            <div class="property" {{ block.shopify_attributes }}>
+              {% if block.settings.icon != blank %}
+                <img
+                  src="{{ block.settings.icon | img_url: '50x50' }}"
+                  class="icon"
+                  alt="{{ block.settings.icon.alt | escape }}"
+                >
+              {% endif %}
+
+              <div class="text {{ block.id }}_text">
+                {{ block.settings.text }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- CENTER -->
+      <div class="center-side triple-product-image-desktop ">
+        <div class="image-wrapper">
+          {% if section.settings.corner_logo %}
+            <img src="{{ section.settings.corner_logo | img_url: '80x80' }}" class="corner-logo">
+          {% endif %}
+
+          {% if section.settings.main_product_image %}
+            <img
+              src="{{ section.settings.main_product_image | img_url: 'master' }}"
+              class="main-image"
+              style="width: {{ section.settings.image_width }}px;"
+            >
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="right-side">
+        {% for block in section.blocks %}
+          {% if block.type == 'right_list' %}
+            <div class="list-item" style="text-align: {{ block.settings.text_align }};" {{ block.shopify_attributes }}>
+              <div
+                class="text"
+                style="
+                  color: {{ block.settings.text_color }};
+                  font-size: {{ block.settings.font_size }}px;
+                "
+              >
+                {{ block.settings.text }}
+              </div>
+
+              {% if block.settings.icon %}
+                <img src="{{ block.settings.icon | img_url: '50x50' }}" class="icon">
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <!-- CENTER -->
+    <div class="center-side triple-product-image-mobile ">
+      <div class="image-wrapper">
+        {% if section.settings.corner_logo %}
+          <img src="{{ section.settings.corner_logo | img_url: '80x80' }}" class="corner-logo">
+        {% endif %}
+
+        {% if section.settings.main_product_image %}
+          <img
+            src="{{ section.settings.main_product_image | img_url: 'master' }}"
+            class="main-image"
+            style="width: {{ section.settings.image_width }}px;"
+          >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Triple Product Pro",
+  "settings": [
+    {
+      "type": "color",
+      "label": "Choose Background Color",
+      "id": "triple-product-bg-color"
+    },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "Our Product Features"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Font Size",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "default": 28
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_product_image",
+      "label": "Main Product Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "corner_logo",
+      "label": "Top Left Logo"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image Width",
+      "min": 200,
+      "max": 600,
+      "step": 10,
+      "default": 350
+    },
+    {
+      "type": "header",
+      "content": "Logo Bar Settings"
+    },
+    {
+      "type": "range",
+      "id": "logo_gap",
+      "label": "Logo Gap",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo Width",
+      "min": 40,
+      "max": 200,
+      "step": 5,
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "left_property",
+      "name": "Left Property",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "color", "id": "text_color", "label": "Text Color", "default": "#000000" },
+        { "type": "range", "id": "font_size", "label": "Font Size", "min": 12, "max": 30, "step": 1, "default": 16 },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Font Weight",
+          "options": [
+            { "value": "400", "label": "Normal" },
+            { "value": "600", "label": "Semi Bold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "color",
+          "id": "text_heighlight_color",
+          "label": "HeighLight Color"
+        },
+        {
+          "type": "color",
+          "id": "text_heighlight_bg_color",
+          "label": "HeighLight Background Color"
+        }
+      ]
+    },
+    {
+      "type": "right_list",
+      "name": "Right List Item",
+      "settings": [
+        { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "color", "id": "text_color", "label": "Text Color", "default": "#000000" },
+        { "type": "range", "id": "font_size", "label": "Font Size", "min": 12, "max": 30, "step": 1, "default": 16 },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text Alignment",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "right"
+        }
+      ]
+    },
+    {
+      "type": "logo_item",
+      "name": "Logo",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo Image"
+        },
+        {
+          "type": "range",
+          "id": "logo_width",
+          "label": "Logo Width",
+          "min": 40,
+          "max": 200,
+          "step": 5,
+          "default": 80
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Triple Product Pro"
+    }
+  ]
+}
+{% endschema %}

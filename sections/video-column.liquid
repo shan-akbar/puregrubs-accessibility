@@ -1,0 +1,280 @@
+<style>
+  .video-column-heading p{
+    font-size: 40px;
+    line-height: 1.1;
+  }
+
+  @media(max-width: 600px){
+    .video-column-heading p{
+      font-size: 34px;
+    }
+  }
+</style>
+<div id="video-column-{{ section.id }}" class="video-column">
+  <div class="video-column-wrapper page-width">
+    <div class="video-column-heading">
+      {{ section.settings.video_heading }}
+    </div>
+    <div class="video-column-video-wrapper">
+      {% for block in section.blocks %}
+        {% if block.settings.video_file != blank %}
+          <div class="video-box video-box-{{ block.id }}">
+            {{
+              block.settings.video_file
+              | video_tag:
+                controls: block.settings.video_controls,
+                autoplay: block.settings.video_autoplay,
+                loop: block.settings.video_loop,
+                muted: block.settings.video_autoplay
+            }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<style>
+  @font-face {
+    font-family: 'Noto_Sans_Condensed_bold';
+    src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+  }
+
+  #video-column-{{ section.id }} {
+    background: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #video-column-{{ section.id }} .video-column-heading {
+    color: {{ section.settings.video_heading_color }};
+    font-size: {{ section.settings.video_heading_size }}px;
+    font-weight: {{ section.settings.video_heading_weight }};
+    line-height: 111%;
+    font-family: 'Noto_Sans_Condensed_bold';
+    text-align: {{ section.settings.video_heading_align }};
+    margin-bottom:40px;
+    display:block;
+  }
+
+  /* Remove default margins from inner heading tags */
+  #video-column-{{ section.id }} .video-column-heading,
+  #video-column-{{ section.id }} .video-column-heading h1,
+  #video-column-{{ section.id }} .video-column-heading h2,
+  #video-column-{{ section.id }} .video-column-heading h3,
+  #video-column-{{ section.id }} .video-column-heading h4,
+  #video-column-{{ section.id }} .video-column-heading h5,
+  #video-column-{{ section.id }} .video-column-heading h6,
+  #video-column-{{ section.id }} .video-column-heading p {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  #video-column-{{ section.id }} .video-column-heading h1,
+  #video-column-{{ section.id }} .video-column-heading h2,
+  #video-column-{{ section.id }} .video-column-heading h3,
+  #video-column-{{ section.id }} .video-column-heading h4,
+  #video-column-{{ section.id }} .video-column-heading h5,
+  #video-column-{{ section.id }} .video-column-heading h6,
+  #video-column-{{ section.id }} .video-column-heading p {
+    margin-bottom: 0;
+  }
+
+  #video-column-{{ section.id }} .video-column-video-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  {% for block in section.blocks %}
+   .video-box-{{ block.id }}{
+    width:100%;
+    height:100%;
+    max-width:{{ block.settings.video_width }}px;
+    min-height:{{ block.settings.video_height }}px;
+    }
+   .video-box-{{ block.id }} video{
+    border-radius:{{ block.settings.video_radius }}px;
+    overflow:hidden;
+    width:100%;
+    object-fit:cover;
+    object-position:center;
+    height:100%;
+    }
+
+  {% endfor %}
+   @media screen and (max-width:768px){
+   #video-column-{{ section.id }} .video-column-video-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    }
+   #video-column-{{ section.id }} .video-column-video-wrapper .video-box {
+    max-width:100%;
+    height:300px;
+    }
+   }
+
+   @media(max-width: 600px){
+    .video-column{
+      padding-top: 40px !important;
+      padding-bottom: 40px !important;
+    }
+   }
+</style>
+{% schema %}
+{
+  "name": "Video Column",
+
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "richtext",
+      "id": "video_heading",
+      "label": "Video Heading",
+      "default": "<h2>Our Video</h2>"
+    },
+    {
+      "type": "select",
+      "id": "video_heading_align",
+      "label": "Heading Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "video_heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "video_heading_size",
+      "label": "Heading Font Size",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "video_heading_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Video",
+      "name": "Video Block",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Video Settings"
+        },
+
+        {
+          "type": "video",
+          "id": "video_file",
+          "label": "Upload Video"
+        },
+        {
+          "type": "range",
+          "id": "video_radius",
+          "label": "Video Border Radius",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "video_width",
+          "label": "Video Width",
+          "min": 200,
+          "max": 1200,
+          "step": 20,
+          "default": 500,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "video_height",
+          "label": "Video Height",
+          "min": 150,
+          "max": 800,
+          "step": 10,
+          "default": 300,
+          "unit": "px"
+        },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Video URL (YouTube/Vimeo)"
+        },
+        {
+          "type": "checkbox",
+          "id": "video_autoplay",
+          "label": "Autoplay",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "video_loop",
+          "label": "Loop",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "video_controls",
+          "label": "Show Controls",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Column"
+    }
+  ]
+}
+{% endschema %}

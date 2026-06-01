@@ -1,0 +1,162 @@
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+ @font-face {
+     font-family: 'Noto_Sans_Condensed_bold';
+     src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+ }
+
+ .hero-section {
+     height: 100vh;
+     min-height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ .hero-section-wrapper {
+     display: flex;
+     width: 100%;
+     position: relative;
+     min-height: 50vh;
+
+ }
+
+ .hero-section-text-wrapper {
+     max-width: 450px;
+
+ }
+
+ .hero-section-text-wrapper .ratings .text {
+
+     font-family: 'Noto Sans', sans-serif;
+ }
+
+ .hero-section-rich-text {
+     font-family: 'Noto Sans', sans-serif;
+
+ }
+
+ .hero-section .hero-section-text-wrapper .hero-section-heading {
+     line-height: 111.1%;
+     margin: 0 0 15px 0;
+     font-family: 'Noto_Sans_Condensed_bold';
+    text-transform: uppercase;
+ }
+
+ .hero-section-image-wrapper {
+     width: 100%;
+ }
+
+ .hero-section-image-wrapper-img {
+     width: 100%;
+     position: relative;
+ }
+
+ .hero-section-image-wrapper-img img {
+     width: 100%;
+     object-fit: cover;
+     object-position: center;
+ }
+
+ .hero-section-image-wrapper-img .custom-badge {
+     width: 100%;
+     max-width: 110px;
+     position: absolute;
+     top: -95px;
+     right: -70px;
+ }
+
+ .hero-section-image-wrapper-img .custom-badge img {
+     width: 100%;
+     object-fit: cover;
+     object-position: center;
+ }
+
+ .hero-section-button {
+     padding: 12px 30px;
+     border-radius: 10px;
+     text-decoration: none;
+ }
+
+ .hero-section-text-wrapper .ratings {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+ }
+
+
+ @media screen and (max-width:1024px) {
+     .hero-section-wrapper .hero-section-image-wrapper {
+         max-width: 500px !important;
+     }
+ }
+
+ @media screen and (max-width: 900px) {
+     .hero-section-wrapper .hero-section-image-wrapper {
+         max-width: 430px !important;
+     }
+
+     .hero-section-text-wrapper {
+         max-width: 400px;
+     }
+
+     .hero-section-wrapper .hero-section-heading {
+         font-size: 35px !important;
+
+     }
+
+     .hero-section-wrapper .hero-section-rich-text {
+         font-size: 14px !important;
+     }
+ }
+
+ @media screen and (max-width:768px) {
+     .hero-section-text-wrapper {
+         max-width: 100% !important;
+         align-items: center;
+         justify-content: center;
+         display: flex;
+         flex-direction: column;
+         text-align: center;
+     }
+
+     .hero-section-wrapper {
+
+         flex-direction: column;
+     }
+
+     .hero-section-wrapper .hero-section-image-wrapper {
+         max-width: 550px !important;
+         position: unset !important;
+     }
+
+     .hero-section-wrapper .hero-section-image-wrapper-img {
+         max-width: 550px !important;
+     }
+
+     .hero-section {
+         padding-bottom: 0 !important;
+        
+     }
+
+     .hero-section-wrapper {
+         gap: 50px;
+         min-height: auto;
+     }
+
+     .hero-section-image-wrapper-img .custom-badge {
+
+         max-width: 60px;
+
+         top: -60px;
+         right: -30px;
+     }
+ }
+
+ @media screen and (max-width:425px) {
+     .hero-section-image-wrapper-img .custom-badge {
+         max-width: 50px;
+         top: -40px;
+         right: -10px;
+     }
+ }

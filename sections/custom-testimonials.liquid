@@ -1,0 +1,345 @@
+<style>
+     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+     @font-face {
+       font-family: 'Noto_Sans_Condensed_bold';
+       src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+     }
+  .testimonials-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding: 60px 0px;
+    font-family: inherit;
+  }
+
+  .testimonials-heading-{{ section.id }} {
+    text-align: {{ section.settings.heading_align }};
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: {{ section.settings.heading_weight }};
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Noto_Sans_Condensed_bold';
+  }
+
+  .testimonials-grid-{{ section.id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 70px;
+    justify-content: center;
+  }
+
+  .testimonial-block-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .testimonial-image-{{ section.id }} {
+    /* Engineering trick: This forces the image to be a perfect circle regardless of upload dimensions */
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .testimonial-content-{{ section.id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .testimonial-review-{{ section.id }} {
+    color: {{ section.settings.review_color }};
+    font-size: {{ section.settings.review_size }}px;
+    font-weight: {{ section.settings.review_weight }};
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .testimonial-author-{{ section.id }} {
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .testimonial-name-{{ section.id }} {
+    color: {{ section.settings.name_color }};
+    font-size: {{ section.settings.name_size }}px;
+    font-weight: {{ section.settings.name_weight }};
+    display: block;
+    margin-bottom: 2px;
+    font-family: 'Noto Sans', sans-serif;
+  }
+
+  .testimonial-profession-{{ section.id }} {
+    color: {{ section.settings.prof_color }};
+    font-size: {{ section.settings.prof_size }}px;
+    font-weight: {{ section.settings.prof_weight }};
+    display: block;
+    font-family: 'Noto Sans', sans-serif;
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-block-{{ section.id }} {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .testimonials-section-{{ section.id }} {
+      padding: 30px 0px;
+    }
+  }
+</style>
+
+<div class="testimonials-section-{{ section.id }}">
+  <div class="testimonials-container-{{ section.id }} page-width">
+    {% if section.settings.heading_text != blank %}
+      <h2 class="testimonials-heading-{{ section.id }}">{{ section.settings.heading_text }}</h2>
+    {% endif %}
+
+    <div class="testimonials-grid-{{ section.id }}">
+      {% for block in section.blocks %}
+        <div class="testimonial-block-{{ section.id }}" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            <img
+              src="{{ block.settings.image | img_url: 'master' }}"
+              alt="{{ block.settings.name | escape }}"
+              class="testimonial-image-{{ section.id }}"
+              style="width:100%; max-width: {{ block.settings.image_width }}px;"
+              loading="lazy"
+            >
+          {% else %}
+            <div
+              class="testimonial-image-{{ section.id }}"
+              style="width: {{ block.settings.image_width }}px; background-color: #ddd; display: flex; align-items: center; justify-content: center;"
+            >
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+          {% endif %}
+
+          <div class="testimonial-content-{{ section.id }}">
+            {% if block.settings.review_text != blank %}
+              <div class="testimonial-review-{{ section.id }}">"{{ block.settings.review_text }}"</div>
+            {% endif %}
+
+            <div class="testimonial-author-{{ section.id }}">
+              {% if block.settings.name != blank %}
+                <span class="testimonial-name-{{ section.id }}">{{ block.settings.name }}</span>
+              {% endif %}
+
+              {% if block.settings.profession != blank %}
+                <span class="testimonial-profession-{{ section.id }}">{{ block.settings.profession }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Testimonials",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f4ede1"
+    },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading",
+      "default": "TESTIMONIALS"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Heading Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#6b5e48"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 36
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "bold", "label": "Bold" },
+        { "value": "900", "label": "Black (900)" }
+      ],
+      "default": "bold"
+    },
+    {
+      "type": "header",
+      "content": "Review Text Settings"
+    },
+    {
+      "type": "color",
+      "id": "review_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "review_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "review_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "bold", "label": "Bold" }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "header",
+      "content": "Name Settings"
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Text Color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "name_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "name_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "bold", "label": "Bold" },
+        { "value": "900", "label": "Black" }
+      ],
+      "default": "bold"
+    },
+    {
+      "type": "header",
+      "content": "Professional Title Settings"
+    },
+    {
+      "type": "color",
+      "id": "prof_color",
+      "label": "Text Color",
+      "default": "#555555"
+    },
+    {
+      "type": "range",
+      "id": "prof_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "prof_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "normal", "label": "Normal" },
+        { "value": "bold", "label": "Bold" }
+      ],
+      "default": "normal"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Author Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 80,
+          "max": 250,
+          "step": 5,
+          "unit": "px",
+          "label": "Image Width",
+          "default": 150
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review Text",
+          "default": "I track my own protein intake — now I track my hens'."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Sarah M."
+        },
+        {
+          "type": "text",
+          "id": "profession",
+          "label": "Professional Title",
+          "default": "Fitness Coach"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

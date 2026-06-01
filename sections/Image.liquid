@@ -1,0 +1,121 @@
+<div id="image-section-{{ section.id }}">
+  <div class="image-section-wrapper page-width">
+    {% if section.settings.image != blank %}
+      <img
+        src="{{ section.settings.image | image_url }}"
+        loading="lazy"
+        class="image-{{ section.id }}"
+      >
+    {% endif %}
+  </div>
+</div>
+<style>
+  #image-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color:{{section.settings.section_bg }};
+  }
+
+  #image-section-{{ section.id }} .image-section-wrapper {
+    width: 100%;
+    max-width: {{ section.settings.image_width }}px;
+    margin: 0 auto;
+  }
+
+  /* IMAGE STYLE */
+  #image-section-{{ section.id }} .image-{{ section.id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: {{ section.settings.image_radius }}px;
+    object-fit: {{ section.settings.image_fit }};
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    #image-section-{{ section.id }} .image-section-wrapper {
+      max-width: 100%;
+      padding: 0 15px;
+    }
+
+    #image-section-{{ section.id }} .image-{{ section.id }} {
+      border-radius: calc({{ section.settings.image_radius }}px * 0.7);
+    }
+  }
+
+  @media (max-width: 480px) {
+    #image-section-{{ section.id }} .image-{{ section.id }} {
+      border-radius: calc({{ section.settings.image_radius }}px * 0.5);
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": "Image Section",
+  "settings": [
+    {
+      "type": "color",
+      "label": "Choose Background Color",
+      "id": "section_bg"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image Width",
+      "min": 100,
+      "max": 1000,
+      "step": 20,
+      "default": 500,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "Border Radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image Fit",
+      "options": [
+        { "value": "cover", "label": "Cover (Crop)" },
+        { "value": "contain", "label": "Contain (Fit)" },
+        { "value": "fill", "label": "Fill (Stretch)" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    }
+  ],
+  "presets": [{ "name": "Image Section" }]
+}
+{% endschema %}

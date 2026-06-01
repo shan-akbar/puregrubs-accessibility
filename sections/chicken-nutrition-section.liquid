@@ -1,0 +1,381 @@
+{{ 'chicken-nutrition-section.css' | asset_url | stylesheet_tag }}
+<section class="chicken-section" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container page-width">
+    <div class="chicken-nutrition-heading rte">
+      {{ section.settings.heading }}
+    </div>
+
+    <div class="content-wrapper">
+      <div class="features left">
+        {% for block in section.blocks %}
+          {% if block.settings.position == 'left' %}
+            <div class="feature">
+              <div class="icon">
+                <img src="{{ block.settings.icon | image_url }}" alt="">
+              </div>
+              <h4>{{ block.settings.title }}</h4>
+              <p>{{ block.settings.text }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="center-image">
+        <img src="{{ section.settings.main_image | image_url }}" alt="">
+      </div>
+
+      <div class="features right">
+        {% for block in section.blocks %}
+          {% if block.settings.position == 'right' %}
+            <div class="feature">
+              <div class="icon">
+                <img src="{{ block.settings.icon | image_url }}" alt="">
+              </div>
+              <h4>{{ block.settings.title }}</h4>
+              <p>{{ block.settings.text }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="btn-wrapper">
+      <a href="{{ section.settings.button_url }}" class="btn">
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+     #shopify-section-{{ section.id }} .chicken-nutrition-heading {
+       max-width: 800px;
+       margin: 0 auto 50px;
+       text-align: center;
+       font-size: {{ section.settings.heading_size }}px;
+       font-weight: {{ section.settings.heading_weight }};
+       color: {{ section.settings.heading_color }};
+       text-transform: {{ section.settings.heading_text_transform }};
+       line-height: 40px;
+     }
+
+    #shopify-section-{{ section.id }} .chicken-nutrition-heading strong {
+       color: {{ section.settings.highlight_color }};
+     }
+
+     /* LEFT + RIGHT unified */
+    #shopify-section-{{ section.id }} .features.left .feature,
+     #shopify-section-{{ section.id }} .features.right .feature {
+       text-align: {{ section.settings.text_align }};
+       align-items: {{ section.settings.alignment }};
+     }
+
+
+     /* Icon */
+  #shopify-section-{{ section.id }}  .chicken-section .icon {
+       width: 100%;
+       max-width: {{ section.settings.icon_width }}px;
+       margin-bottom: 25px;
+     }
+
+  #shopify-section-{{ section.id }} .chicken-section  .icon img {
+       width: 100%;
+       object-fit: cover;
+       object-position: center;
+     }
+
+     /* Title */
+    #shopify-section-{{ section.id }} .chicken-section .feature h4 {
+       font-size: {{ section.settings.title_size }}px;
+       font-weight: {{ section.settings.title_weight }};
+       color: {{ section.settings.title_color }};
+       text-transform: {{ section.settings.text_transform }};
+       margin-bottom: 0;
+     }
+
+     /* Text */
+   #shopify-section-{{ section.id }}  .feature p {
+       font-size: {{ section.settings.text_size }}px;
+       color: {{ section.settings.text_color }};
+       text-align: {{ section.settings.text_align }};
+       line-height: 100%;
+     }
+
+     /* Center Image */
+   #shopify-section-{{ section.id }}  .center-image {
+       width: 100%;
+       max-width: {{ section.settings.image_width }}px;
+     }
+
+    #shopify-section-{{ section.id }} .center-image img {
+       width: 100%;
+       object-fit: cover;
+     }
+
+ #shopify-section-{{ section.id }} .chicken-section   .btn {
+       background-color: {{ section.settings.btn_bg }};
+       color: {{ section.settings.btn_text }};
+
+     }
+
+  #shopify-section-{{ section.id }} .chicken-section  .btn:hover {
+       background-color: {{ section.settings.btn_hover_bg }};
+       color: {{ section.settings.btn_hover_text }};
+     }
+
+     /* =========================================
+        RESPONSIVE DESIGN LOGIC
+        ========================================= */
+
+     /* Tablet Layout (max-width: 990px) */
+     @media screen and (max-width: 990px) {
+      #shopify-section-{{ section.id }} .center-image img {
+         max-width: {{ section.settings.image_width }}px; /* Maintain image proportions */
+       }
+     }
+
+     /* Mobile Layout (max-width: 768px) */
+     @media screen and (max-width: 768px) {
+      #shopify-section-{{ section.id }} .chicken-nutrition-heading {
+         font-size: calc({{ section.settings.heading_size }}px * 0.75); /* Automatically scale down heading */
+
+       }
+     }
+</style>
+
+{% schema %}
+{
+  "name": "Chicken Nutrition Section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Because your chickens <strong>DESERVE</strong> the same clean nutrition you do</p>"
+    },
+    {
+      "type": "select",
+      "id": "heading_text_transform",
+      "label": "Feature Title Text Transform",
+      "options": [
+        { "value": "none", "label": "Normal" },
+        { "value": "uppercase", "label": "UPPERCASE" },
+        { "value": "lowercase", "label": "lowercase" },
+        { "value": "capitalize", "label": "Capitalize" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "min": 20,
+      "max": 60,
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "900", "label": "Bolder" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#2b2b2b"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight Color",
+      "default": "#c96b2c"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Center Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Center Image Width",
+      "min": 150,
+      "max": 500,
+      "step": 10,
+      "default": 260
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Feature Title Size",
+      "min": 14,
+      "max": 30,
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Feature Title Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Bolder" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Feature Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "select",
+      "id": "text_transform",
+      "label": "Feature Title Text Transform",
+      "options": [
+        { "value": "none", "label": "Normal" },
+        { "value": "uppercase", "label": "UPPERCASE" },
+        { "value": "lowercase", "label": "lowercase" },
+        { "value": "capitalize", "label": "Capitalize" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text Size",
+      "min": 12,
+      "max": 20,
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "icon_width",
+      "label": "Icon Width",
+      "min": 20,
+      "max": 100,
+      "step": 2,
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Feature Text Align (Both Sides)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Feature Content Alignment (Both Sides)",
+      "options": [
+        { "value": "flex-start", "label": "Start" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "End" }
+      ],
+      "default": "flex-end"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f3e6d7"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Button Background",
+      "default": "#a55a2a"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Button Hover Background",
+      "default": "#7a3e1c"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_text",
+      "label": "Button Hover Text",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Position",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Feature description here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Chicken Nutrition Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

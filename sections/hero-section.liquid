@@ -1,0 +1,408 @@
+{{ 'hero-section.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* Base section styling */
+  #hero-section-{{ section.id }} {
+    background: radial-gradient(circle, #F2EBE4 0%, rgba(206, 176, 138, 1) 100%);
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    overflow: hidden;
+  }
+
+  #hero-section-{{ section.id }}  .hero-section-text-wrapper .ratings .text{
+    font-size:{{ section.settings.rating_font_size }}px;
+    color:{{section.settings.rating_text_color }};
+  }
+  #hero-section-{{ section.id }}  .hero-section-text-wrapper .ratings .stars{
+    font-size:{{ section.settings.star_size }}px;
+    color:{{section.settings.star_color }};
+  }
+  #hero-section-{{ section.id }} .hero-section-heading{
+    font-size:{{ section.settings.heading_size }}px;
+    color:{{ section.settings.heading_color }};
+    font-weight:{{ section.settings.heading_weight }};
+  }
+
+  #hero-section-{{ section.id }} .hero-section-rich-text{
+    font-size:{{ section.settings.paragraph_size }}px;
+    font-weight:{{section.settings.paragraph_weight }};
+    color:{{section.settings.paragraph_color }};
+    line-height:20px;
+  }
+
+  #hero-section-{{ section.id }} .hero-section-button{
+    background-color:{{section.settings.button_bg }};
+    font-weight:{{section.settings.button_weight }};
+    font-size:{{ section.settings.button_font_size }}px;
+    color:{{ section.settings.button_text_color }};
+    margin-top: 3rem;
+    display: inline-block;
+  }
+
+   #hero-section-{{ section.id }}  .hero-section-image-wrapper{
+    max-width:{{ section.settings.image_width }}px;
+    position: relative;
+    top: 160px;
+    right: 0;
+  }
+   #hero-section-{{ section.id }}  .hero-section-image-wrapper-img{
+    max-width:{{ section.settings.image_width }}px;
+  }
+
+  @media(min-width: 990px){
+    .hero-section-text-wrapper{
+      position: relative;
+      left: 80px;
+    }
+
+    .hero-section-image-wrapper{
+      position: relative;
+      right: 80px !important;
+    }
+  }
+
+  @media(min-width: 768px){
+     .hero-section-wrapper{
+        top: 56px;
+     }
+  }
+
+  @media(max-width: 768px){
+    .hero-section-heading{
+      margin-top: 15px !important;
+    }
+    .hero-section{
+      padding-top: 180px !important;
+    }
+  }
+
+  @media(max-width: 600px){
+    .hero-section-heading{
+      max-width: 380px;
+    }
+
+    .hero-section-rich-text{
+      max-width: 370px;
+    }
+
+    .hero-section{
+      padding-top: 140px !important;
+    }
+  }
+
+  @media(max-width: 375px){
+    .hero-section{
+      padding-top: 185px !important;
+    }
+  }
+</style>
+
+<div id="hero-section-{{ section.id }}" class="hero-section">
+  <div class="hero-section-wrapper page-width">
+    <div class="hero-section-text-wrapper">
+      {% comment %} Ratings {% endcomment %}
+      {% comment %} <div class="ratings">
+        <div class="stars">{{ section.settings.rating_stars }}</div>
+        <div class="text">{{ section.settings.rating_text }}</div>
+      </div> {% endcomment %}
+        {%- for block in section.blocks -%}
+          {% render block %}
+        {%- endfor -%}
+      {% comment %} Heading {% endcomment %}
+      <h2 class="hero-section-heading">{{ section.settings.heading_text }}</h2>
+
+      {% comment %} Paragraph {% endcomment %}
+      <div class="hero-section-rich-text">{{ section.settings.paragraph_text }}</div>
+
+      {% comment %} Button {% endcomment %}
+      <a class="hero-section-button" href="{{ section.settings.button_url }}">{{ section.settings.button_label }}</a>
+    </div>
+
+    {% comment %} Image Wrapper (Now includes the optional floating badge) {% endcomment %}
+    <div class="hero-section-image-wrapper">
+      <div class="hero-section-image-wrapper-img">
+        {% if section.settings.badge_image %}
+          <div class="custom-badge">
+            <img
+              class="floating-badge"
+              src="{{ section.settings.badge_image | img_url: 'master' }}"
+              alt="Badge"
+              loading="lazy"
+            >
+          </div>
+        {% endif %}
+
+        {% if section.settings.image %}
+          <img src="{{ section.settings.image | img_url: 'master' }}" alt="Hero Product" loading="lazy">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero Section",
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "color",
+      "label": "Choose Section Background Color",
+      "default": "#E8D8C1",
+      "id": "bg-color"
+    },
+    {
+      "type": "header",
+      "content": "Spacing Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Rating Settings"
+    },
+    {
+      "type": "select",
+      "id": "rating_stars",
+      "label": "Select Rating Stars",
+      "options": [
+        { "value": "⭐", "label": "⭐" },
+        { "value": "⭐⭐", "label": "⭐⭐" },
+        { "value": "⭐⭐⭐", "label": "⭐⭐⭐" },
+        { "value": "⭐⭐⭐⭐", "label": "⭐⭐⭐⭐" },
+        { "value": "⭐⭐⭐⭐⭐", "label": "⭐⭐⭐⭐⭐" }
+      ],
+      "default": "⭐⭐⭐⭐⭐"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Color (SVGs mostly)",
+      "default": "#FFD700"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Star Size",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    { "type": "text", "id": "rating_text", "label": "Enter Text", "default": "190,538 Happy Costumers (and Chickens)" },
+    {
+      "type": "color",
+      "id": "rating_text_color",
+      "label": "Text Color",
+      "default": "#4A4A4A"
+    },
+    {
+      "type": "range",
+      "id": "rating_font_size",
+      "label": "Rating Text Font Size",
+      "min": 10,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading_text",
+      "label": "Heading Text",
+      "default": "FEED YOUR FLOCK LIKE YOU FEED YOURSELF"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Font Size",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "900", "label": "Black" }
+      ],
+      "default": "900"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Text Color",
+      "default": "#5A4A3F"
+    },
+    {
+      "type": "header",
+      "content": "Paragraph Settings"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph_text",
+      "label": "Paragraph Text",
+      "default": "High-protein, omega-rich, USA-grown black soldier fly grubs — the cleanest, most natural superfood for chickens."
+    },
+    {
+      "type": "range",
+      "id": "paragraph_size",
+      "label": "Font Size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "paragraph_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "color",
+      "id": "paragraph_color",
+      "label": "Text Color",
+      "default": "#4A4A4A"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Background Color",
+      "default": "#9C5A23"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Font Size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "button_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border Radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Select Main Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Main Image Max Width",
+      "min": 200,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "default": 650
+    },
+    {
+      "type": "image_picker",
+      "id": "badge_image",
+      "label": "Select Badge Image (Optional)"
+    },
+    {
+      "type": "range",
+      "id": "badge_width",
+      "label": "Badge Width",
+      "min": 50,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section"
+    }
+  ]
+}
+{% endschema %}

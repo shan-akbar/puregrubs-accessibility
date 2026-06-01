@@ -1,0 +1,251 @@
+{% style %}
+     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    background-color: {{ section.settings.section_bg_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .feature-icons-container-{{ section.id }} {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: {{ section.settings.justify_alignment }};
+    gap: {{ section.settings.gap }}px;
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  @media(max-width: 425px){
+     .feature-icons-container-{{ section.id }} {
+        justify-content: space-evenly;
+        max-width: 375px;
+     }
+
+  }
+
+  .feature-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .feature-block-image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-direction:column;
+  }
+
+  .feature-block-text {
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 5px;
+    font-family: 'Noto Sans', sans-serif;
+  }
+{% endstyle %}
+
+<div class="section-{{ section.id }}-padding">
+  <div class="feature-icons-container-{{ section.id }}">
+    {% for block in section.blocks %}
+      <div class="feature-block" {{ block.shopify_attributes }}>
+        {% comment %} Image / Icon Wrapper {% endcomment %}
+        <div
+          class="feature-block-image-wrapper"
+          style="
+            background-color: {{ block.settings.block_bg_color }};
+            border-radius: {{ block.settings.border_radius }}%;
+            width: {{ block.settings.image_width }}px;
+            height: {{ block.settings.image_height }}px;
+          "
+        >
+          {% if block.settings.image != blank %}
+            {{
+              block.settings.image
+              | image_url: width: 200
+              | image_tag: loading: 'lazy', style: 'max-width: 40%; max-height: 40%; object-fit: contain;'
+            }}
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+
+          {% comment %} Text Block {% endcomment %}
+          {% if block.settings.text != blank %}
+            <div
+              class="feature-block-text"
+              style="
+                color: {{ block.settings.text_color }};
+                font-size: {{ block.settings.text_size }}px;
+                font-weight: {{ block.settings.text_weight }};
+              "
+            >
+              {{ block.settings.text | newline_to_br }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Feature Icon",
+  "settings": [
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#f4eadb"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    },
+    {
+      "type": "select",
+      "id": "justify_alignment",
+      "label": "Alignment (Justify)",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" },
+        { "value": "space-between", "label": "Space Between" },
+        { "value": "space-evenly", "label": "Space Evenly" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap between blocks",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_with_text",
+      "name": "Icon Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Feature Text"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 20,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "Block Width",
+          "default": 80
+        },
+        {
+          "type": "range",
+          "id": "image_height",
+          "min": 20,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "label": "Block Height",
+          "default": 80
+        },
+        {
+          "type": "color",
+          "id": "block_bg_color",
+          "label": "Block Background Color",
+          "default": "#a15c24"
+        },
+        {
+          "type": "range",
+          "id": "border_radius",
+          "min": 0,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "Border Radius",
+          "default": 50,
+          "info": "Set to 50% for a perfect circle."
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "min": 5,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "label": "Text Size",
+          "default": 12
+        },
+        {
+          "type": "select",
+          "id": "text_weight",
+          "label": "Text Weight",
+          "options": [
+            { "value": "400", "label": "Normal" },
+            { "value": "600", "label": "Semi-Bold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "400"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Icon",
+      "blocks": [
+        { "type": "image_with_text" },
+        { "type": "image_with_text" },
+        { "type": "image_with_text" },
+        { "type": "image_with_text" }
+      ]
+    }
+  ]
+}
+{% endschema %}

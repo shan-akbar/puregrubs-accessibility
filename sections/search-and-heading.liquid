@@ -1,0 +1,226 @@
+<div id="search-Field-{{ section.id }}" class="search-Field">
+  <div class="search-Field-container page-width">
+    <h2 class="search-Field-heading">{{ section.settings.heading }}</h2>
+    <div class="search-Field-form">
+      <input type="search" placeholder="{{ section.settings.placeholder }}">
+      <button>
+        <img
+          src="https://cdn.shopify.com/s/files/1/0954/7926/7646/files/6ac55bb623637bdb3236d483d0756ca368c3dfb6.png?v=1777627312"
+          loading="lazy"
+        >
+      </button>
+    </div>
+  </div>
+</div>
+<style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+      @font-face {
+      font-family: 'Noto_Sans_Condensed_bold';
+      src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+    }
+      #search-Field-{{ section.id }} {
+          background-color:{{section.settings.bg-color }};
+          padding:40px 0;
+          padding-bottom:60px;
+          }
+      #search-Field-{{ section.id }} .search-Field-heading{
+          color:{{ section.settings.heading_color }};
+          font-size:{{section.settings.heading_font_size }}px;
+          text-transform:{{section.settings.heading_transform }};
+          font-weight:{{ section.settings.heading_font_weight }};
+          margin-top:0;
+          font-family: 'Noto_Sans_Condensed_bold';
+          }
+      .search-Field-form{
+            width:100%;
+           max-width:800px;
+           margin:0 auto;
+           position:relative;
+        }
+      .search-Field-form input{
+           width:100%;
+           background-color:#FFFFFF;
+           padding:15px 14px;
+           color:#6C6C6C;
+           border-radius:10px;
+           outline:none;
+           border:none;
+           font-family: 'Noto Sans', sans-serif;
+           }
+       .search-Field-form button {
+          position: absolute;
+          top: 0;
+          right: 0;
+          background-color: #B7B7B73B;
+          border-radius: 10px;
+          max-width: 60px;
+          padding: 12px 20px;
+          border: none;
+      }
+      .search-Field-form button img {
+        width: 20px;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    /* =========================
+     RESPONSIVE IMPROVEMENTS
+  ========================= */
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+
+    #search-Field-{{ section.id }} {
+      padding: 35px 20px 50px;
+    }
+
+    #search-Field-{{ section.id }} .search-Field-heading{
+      font-size: calc({{section.settings.heading_font_size }}px * 0.85);
+      text-align: center;
+    }
+
+    .search-Field-form{
+      max-width: 90%;
+    }
+
+    .search-Field-form input{
+      padding: 14px 50px 14px 14px; /* space for button */
+    }
+
+    .search-Field-form button{
+      max-width: 50px;
+      padding: 12px;
+    }
+
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+
+    #search-Field-{{ section.id }} {
+      padding: 30px 15px 45px;
+    }
+
+    #search-Field-{{ section.id }} .search-Field-heading{
+      font-size: calc({{section.settings.heading_font_size }}px * 0.7);
+      line-height: 1.3;
+      text-align: center;
+    }
+
+    .search-Field-form{
+      max-width: 100%;
+    }
+
+    .search-Field-form input{
+      padding: 12px 45px 12px 12px;
+      font-size: 14px;
+    }
+
+    .search-Field-form button{
+      max-width: 45px;
+      padding: 10px;
+    }
+
+    .search-Field-form button img{
+      width: 18px;
+    }
+
+  }
+
+  /* Small Mobile */
+  @media (max-width: 480px) {
+
+    #search-Field-{{ section.id }} .search-Field-heading{
+      font-size: calc({{section.settings.heading_font_size }}px * 0.6);
+    }
+
+    .search-Field-form input{
+      padding: 10px 40px 10px 10px;
+      font-size: 13px;
+      border-radius: 8px;
+    }
+
+    .search-Field-form button{
+      max-width: 40px;
+      padding: 8px;
+      border-radius: 8px;
+    }
+
+    .search-Field-form button img{
+      width: 16px;
+    }
+
+  }
+</style>
+{% schema %}
+{
+  "name": "Search Field",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg-color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Heading Settings"
+    },
+    {
+      "type": "text",
+      "label": "Enter Heading",
+      "id": "heading"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading Font Size",
+      "min": 12,
+      "max": 80,
+      "step": 2,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "select",
+      "id": "heading_transform",
+      "label": "Heading Text Transform",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "uppercase", "label": "Uppercase" },
+        { "value": "lowercase", "label": "Lowercase" },
+        { "value": "capitalize", "label": "Capitalize" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "header",
+      "content": "Search Input Settings"
+    },
+    {
+      "type": "text",
+      "label": "Enter placeholder",
+      "id": "placeholder"
+    }
+  ],
+  "presets": [{ "name": "Search Field" }]
+}
+{% endschema %}

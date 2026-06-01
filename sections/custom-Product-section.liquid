@@ -1,0 +1,884 @@
+{{ 'custom-Product-section.css' | asset_url | stylesheet_tag }}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    @font-face {
+          font-family: 'Noto_Sans_Condensed_bold';
+          src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+    }
+  #custom-product-section{
+   background-color:{{ section.settings.custom-product-bg-color }}
+  }
+
+  .custom-product-section1-wrapper .product-img{
+   width:100%;
+   max-width:{{ section.settings.product_image_width }}px;
+  }
+
+  .custom-product-section1-wrapper .product-img img{
+   width:100%;
+   object-fit:cover;
+   object-position:center;
+  }
+
+
+  .custom-product-section1-wrapper .offer-info .discount .discount-img {
+    width:100%;
+    max-width:{{ section.settings.discount_image_width }}px;
+  }
+  .custom-product-section1-wrapper .offer-info .discount .discount-img  img{
+    width:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+
+  .custom-product-section1-wrapper .offer-info .discount .discount-text h3{
+    color:{{ section.settings.discount1_heading_color }};
+    font-size:{{ section.settings.discount1_heading_size }}px;
+    font-weight:{{ section.settings.discount1_heading_weight }};
+    margin:0;
+    font-family: "Noto Sans", sans-serif;
+  }
+
+  .custom-product-section1-wrapper .offer-info .discount .discount-text span{
+    color:{{ section.settings.discount1_text_color }};
+    font-size:{{ section.settings.discount1_text_size }}px;
+    font-weight:{{ section.settings.discount1_text_weight }};
+    font-family: "Noto Sans", sans-serif;
+  }
+
+  .custom-product-section1-wrapper .offer-info .discount .discount-text2 h1{
+    color:{{ section.settings.discount2_heading_color }};
+    font-size:{{ section.settings.discount2_heading_size }}px;
+    font-weight:{{ section.settings.discount2_heading_weight }};
+    font-family: "Noto Sans", sans-serif;
+  }
+
+  .custom-product-section1-wrapper .offer-info .discount .discount-text2 span{
+    color:{{ section.settings.discount2_text_color }};
+    font-size:{{ section.settings.discount2_text_size }}px;
+    font-weight:{{ section.settings.discount2_text_weight }};
+    font-family: "Noto Sans", sans-serif;
+  }
+
+  @media(max-width: 1024px){
+    .custom-product-section1-wrapper .offer-info .discount .discount-text2 span, .custom-product-section1-wrapper .offer-info .discount .discount-text span{
+      font-size: 12px;
+      line-height: 1.1;
+      margin-top: 5px;
+      min-height: 26.38px;
+    }
+  }
+
+  @media(max-width: 844px){
+    .custom-product-section1-wrapper .offer-info .discount {
+        width: 50%;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+  }
+
+  .custom-product-section1-wrapper .offer-logo{
+    width:100%;
+    max-width:{{ section.settings.logo_width }}px;
+  }
+
+  .custom-product-section1-wrapper .offer-logo img{
+    width:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+
+  {% comment %} section 2  {% endcomment %}
+
+  .custom-product-section-wrapper .custom-product-section-details h1{
+     color:{{section.settings.main_heading_color }};
+     font-size:{{section.settings.main_heading_font_size }}px;
+     font-weight:{{section.settings.main_heading_font_weight }};
+     font-family: 'Noto_Sans_Condensed_bold';
+     line-height: 50px;
+  }
+
+  .custom-product-section-wrapper .custom-product-section-details p{
+    color:{{section.settings.description_color }};
+    font-size:{{ section.settings.description_font_size }}px;
+    font-weight:{{ section.settings.description_font_weight }};
+    font-family: "Noto Sans", sans-serif;
+  }
+
+  .custom-product-section-wrapper .custom-product-section-details ul li *{
+    font-family: "Noto Sans", sans-serif;
+  }
+
+  .custom-product-section-wrapper .custom-product-section-details ul li img{
+    width:100%;
+    object-fit:cover;
+    height:100%;
+    object-position:center;
+  }
+
+  .custom-product-section-wrapper .main-product{
+   width:100%;
+   max-width:{{ section.settings.main_product_image_width }}px;
+   margin-top: 15rem;
+   }
+
+  .custom-product-section-wrapper .main-product img{
+    object-fit:cover;
+    object-position:center;
+    width:100%;
+  }
+
+  .custom-product-section-wrapper .product-features  a{
+    color:{{ section.settings.pf_btn_text_color }};
+    background-color:{{ section.settings.pf_btn_bg_color }};
+    border-radius:5px;
+    transition:all ease-out 0.3s;
+    padding: 12px 40px;
+    font-weight:700;
+    text-decoration:none;
+    text-transform:uppercase;
+    font-size:14px;
+    font-family: "Noto Sans", sans-serif;
+  }
+
+  .custom-product-section-wrapper .product-features a:hover{
+    color:{{ section.settings.pf_btn_hover_text_color }};
+    background-color:{{ section.settings.pf_btn_hover_bg_color}};
+
+  }
+
+  .custom-product-section-wrapper .heading-img{
+    width: 100%;
+    max-width: 100px;
+    float: right;
+    margin-top: 2rem;
+    position: relative;
+    left: -35px;
+  }
+
+  .custom-product-section-wrapper .heading-img img{
+    width:100%;
+    object-fit:cover;
+    object-position:center;
+  }
+   @media screen and (max-width:425px){
+     .heading-img.hide-content-on-mobile.hide-on__desktop {
+        right: 10%;
+        top: -60px;
+    }
+  }
+</style>
+
+<div id="custom-product-section">
+  <section class="custom-product-section1 page-width ">
+    <div class="custom-product-section1-wrapper">
+      <div class="product-img">
+        <img src="{{ section.settings.product_image | img_url:"master"  }}" loading="lazy">
+      </div>
+      {% comment %} offer info  {% endcomment %}
+      <div class="offer-info">
+        <div class="discount discount1">
+          <div class="discount-img">
+            <img src="{{ section.settings.discount1_image | img_url:"master" }}">
+          </div>
+          <div class="discount-text">
+            <h3>{{ section.settings.discount1_heading }}</h3>
+            <span>{{ section.settings.discount1_text }}</span>
+          </div>
+        </div>
+        <div class="discount">
+          <div class="discount-img">
+            <img src="{{ section.settings.discount2_image | img_url:"master"}}" loading="lazy">
+          </div>
+          <div class="discount-text discount-text2">
+            <h3>{{ section.settings.discount2_heading }}</h3>
+            <span>{{ section.settings.discount2_text }}</span>
+          </div>
+        </div>
+      </div>
+      {% comment %} logo  {% endcomment %}
+      <div class="offer-logo hide-content-on-mobile ">
+        <img src="{{ section.settings.logo_image | img_url:"master" }}" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section class="page-width custom-product-section2">
+    <div class="custom-product-section-wrapper">
+      <div class="custom-product-section-details custom-product-section-details__mobile">
+        <h1 class="hide-on__desktop">
+          {{ section.settings.main_heading }}
+        </h1>
+
+        <div class="heading-img hide-content-on-mobile hide-on__desktop">
+          <img src="{{ section.settings.main-heading-img | img_url: 'master' }}">
+        </div>
+
+        {% for block in section.blocks %}
+          {% if block.type == '@app' %}
+            <div class="p-reviews__badge hide-on__desktop">
+              {% render block %}
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        <div class="hide-content-on-mobile hide-on__desktop">
+          <p>{{ section.settings.description_text }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-product-section-wrapper">
+      <!-- LEFT CONTENT -->
+      <div class="custom-product-section-details custom-product-section-details__left">
+        <h1 class="hide-on__mobile">
+          {{ section.settings.main_heading }}
+          <div class="heading-img hide-content-on-mobile">
+            <img src="{{ section.settings.main-heading-img | img_url: 'master' }}">
+          </div>
+        </h1>
+        <div class="hide-content-on-mobile hide-on__mobile">
+          <p>{{ section.settings.description_text }}</p>
+        </div>
+
+        <ul class="hide-content-on-mobile">
+          {% for block in section.blocks %}
+            {% if block.type == 'feature_item' %}
+              <li>
+                <div
+                  class="image-wrapper"
+                  style="max-width:{{ block.settings.block_image_width }}px; height:{{ block.settings.block_image_height }}px;"
+                >
+                  {% if block.settings.block_image %}
+                    <img
+                      src="{{ block.settings.block_image | image_url: width: 200 }}"
+                      alt="{{ block.settings.block_text }}"
+                    >
+                  {% endif %}
+                </div>
+
+                <span
+                  style="
+                    font-size:{{ block.settings.block_text_font_size }}px;
+                    font-weight:{{ block.settings.block_text_font_weight }};
+                    color:{{ block.settings.block_text_color }};
+                    margin-left:{{ block.settings.block_text-spacing }}px;
+                  "
+                >
+                  {{ block.settings.block_text }}
+                </span>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- PRODUCT IMAGE -->
+      <div class="main-product main-product-image__desktop">
+        {% if section.settings.main_image %}
+          <img
+            src="{{ section.settings.main_image | image_url: width: 800 }}"
+            loading="lazy"
+            alt="Product Image"
+          >
+        {% endif %}
+      </div>
+
+      <!-- PRODUCT FEATURES -->
+      <div class="product-features product-features__right">
+        <ul class="hide-content-on-mobile">
+          {% for block in section.blocks %}
+            {% if block.type == 'pf_feature_item' %}
+              <li>
+                <div class="p-features__bullet">
+                  {% if block.settings.pf_icon %}
+                    <img
+                      style="                      max-width:{{ block.settings.pf_icon_width }}px;"
+                      src="{{ block.settings.pf_icon | image_url: width: 200 }}"
+                      alt="{{ block.settings.pf_text }}"
+                    >
+                  {% endif %}
+                </div>
+
+                <span
+                  class="font-noto-sans"
+                  style="
+                    font-size:{{ block.settings.pf_font_size }}px;
+                    color:{{ block.settings.pf_font_color }};
+                    font-weight:{{ block.settings.pf_font_weight }};
+                  "
+                >
+                  {{ block.settings.pf_text }}
+                </span>
+              </li>
+
+            {% elsif block.type == '@app' %}
+              <div class="p-reviews__badge hide-on__mobile">
+                {% render block %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <a class="hide-on__mobile font-noto-sans" href="{{ section.settings.pf_btn_url }}">
+          {{- section.settings['pf-btn-name'] -}}
+        </a>
+      </div>
+    </div>
+
+    <div class="custom-product-section-wrapper">
+      <div class="product-features">
+        <a class="hide-on__desktop font-noto-sans" href="{{ section.settings.pf_btn_url }}">
+          {{- section.settings['pf-btn-name'] -}}
+        </a>
+      </div>
+    </div>
+
+    <div class="main-product main-product-image__mobile">
+      {% if section.settings.main_image %}
+        <img
+          src="{{ section.settings.main_image | image_url: width: 800 }}"
+          loading="lazy"
+          alt="Product Image"
+        >
+      {% endif %}
+    </div>
+  </section>
+</div>
+{% schema %}
+{
+  "name": "Custom Product Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Discount Offer Bar Settings"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "range",
+      "id": "product_image_width",
+      "label": "Product Image Width",
+      "min": 100,
+      "max": 1000,
+      "step": 10,
+      "default": 140,
+      "unit": "px"
+    },
+
+    {
+      "type": "header",
+      "content": "Discount 1"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "discount1_image",
+      "label": "Discount 1 Image"
+    },
+
+    {
+      "type": "color",
+      "id": "discount1_bgcolor",
+      "label": "Discount 1 Background Color",
+      "default": "#ffffff"
+    },
+
+    {
+      "type": "text",
+      "id": "discount1_heading",
+      "label": "Discount 1 Heading",
+      "default": "Special Offer"
+    },
+    {
+      "type": "color",
+      "id": "discount1_heading_color",
+      "label": "Discount 1 Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "discount1_heading_size",
+      "label": "Discount 1 Heading Size",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "discount1_heading_weight",
+      "label": "Discount 1 Heading Weight",
+      "default": "700",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "700", "label": "Bold" },
+        { "value": "900", "label": "Extra Bold" }
+      ]
+    },
+
+    {
+      "type": "text",
+      "id": "discount1_text",
+      "label": "Discount 1 Text",
+      "default": "Limited time offer"
+    },
+    {
+      "type": "color",
+      "id": "discount1_text_color",
+      "label": "Discount 1 Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "discount1_text_size",
+      "label": "Discount 1 Text Size",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "discount1_text_weight",
+      "label": "Discount 1 Text Weight",
+      "default": "400",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+
+    {
+      "type": "header",
+      "content": "Discount 2"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "discount2_image",
+      "label": "Discount 2 Image"
+    },
+
+    {
+      "type": "text",
+      "id": "discount2_heading",
+      "label": "Discount 2 Heading",
+      "default": "Big Sale"
+    },
+    {
+      "type": "color",
+      "id": "discount2_heading_color",
+      "label": "Discount 2 Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "discount2_heading_size",
+      "label": "Discount 2 Heading Size",
+      "min": 10,
+      "max": 60,
+      "step": 1,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "discount2_heading_weight",
+      "label": "Discount 2 Heading Weight",
+      "default": "700",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "700", "label": "Bold" },
+        { "value": "900", "label": "Extra Bold" }
+      ]
+    },
+
+    {
+      "type": "text",
+      "id": "discount2_text",
+      "label": "Discount 2 Text",
+      "default": "Hurry up!"
+    },
+    {
+      "type": "color",
+      "id": "discount2_text_color",
+      "label": "Discount 2 Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "discount2_text_size",
+      "label": "Discount 2 Text Size",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "discount2_text_weight",
+      "label": "Discount 2 Text Weight",
+      "default": "400",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "discount_image_width",
+      "label": "Discount Image Width",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "default": 26,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "discount_bgcolor",
+      "label": "Discount 2 Background Color",
+      "default": "#A65316"
+    },
+    {
+      "type": "header",
+      "content": "Logo Settings"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo Image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo Width",
+      "min": 50,
+      "max": 400,
+      "step": 5,
+      "default": 120,
+      "unit": "px"
+    },
+
+    {
+      "type": "color",
+      "label": "Choose Section Background Color",
+      "id": "custom-product-bg-color"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "Your Heading Here"
+    },
+    {
+      "type": "range",
+      "id": "main_heading_font_size",
+      "label": "Heading Font Size",
+      "min": 12,
+      "max": 80,
+      "step": 1,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "main_heading_font_weight",
+      "label": "Heading Font Weight",
+      "default": "700",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "900", "label": "Bolder" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "main_heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "image_picker",
+      "label": "Choose Logo",
+      "id": "main-heading-img"
+    },
+    {
+      "type": "richtext",
+      "id": "description_text",
+      "label": "Description",
+      "default": "<p>Write your description here</p>"
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Description Font Size",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "description_font_weight",
+      "label": "Description Font Weight",
+      "default": "400",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#333333"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "main_product_image_width",
+      "label": "Main Product Image Width",
+      "min": 100,
+      "max": 800,
+      "step": 10,
+      "default": 400,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Product Features"
+    },
+    {
+      "type": "text",
+      "label": "Enter Button Name",
+      "id": "pf-btn-name"
+    },
+    {
+      "type": "url",
+      "id": "pf_btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color",
+      "id": "pf_btn_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "pf_btn_bg_color",
+      "label": "Button Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "pf_btn_hover_text_color",
+      "label": "Button Hover Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "pf_btn_hover_bg_color",
+      "label": "Button Hover Background Color",
+      "default": "#333333"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "feature_item",
+      "name": "Image + Text Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "block_image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "block_image_width",
+          "label": "Image Width",
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "default": 10,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "block_image_height",
+          "label": "Image Height",
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "default": 10,
+          "unit": "px"
+        },
+
+        {
+          "type": "text",
+          "id": "block_text",
+          "label": "Text",
+          "default": "Block text"
+        },
+        {
+          "type": "range",
+          "id": "block_text_font_size",
+          "label": "Text Font Size",
+          "min": 10,
+          "max": 40,
+          "step": 1,
+          "default": 16,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "block_text-spacing",
+          "label": "Text Spacing",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 5,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "block_text_font_weight",
+          "label": "Text Font Weight",
+          "default": "500",
+          "options": [
+            { "value": "400", "label": "Regular" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semi Bold" },
+            { "value": "700", "label": "Bold" }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "block_text_color",
+          "label": "Text Color",
+          "default": "#000000"
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "name": "Reviews Badge",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "reviews_text",
+          "label": "Review Text"
+        }
+      ]
+    },
+    {
+      "type": "pf_feature_item",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "pf_icon",
+          "label": "Icon"
+        },
+        {
+          "type": "richtext",
+          "id": "pf_text",
+          "label": "<p>Text</p>"
+        },
+        {
+          "type": "range",
+          "id": "pf_font_size",
+          "label": "Font Size (px)",
+          "min": 10,
+          "max": 40,
+          "step": 1,
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "pf_font_color",
+          "label": "Font Color",
+          "default": "#000000"
+        },
+        {
+          "type": "select",
+          "id": "pf_font_weight",
+          "label": "Font Weight",
+          "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "500", "label": "Medium" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "range",
+          "id": "pf_icon_width",
+          "label": "Icon Width (px)",
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "pf_icon_height",
+          "label": "Icon Height (px)",
+          "min": 10,
+          "max": 100,
+          "step": 1,
+          "default": 30
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Custom Product Section",
+      "blocks": [
+        {
+          "type": "feature_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

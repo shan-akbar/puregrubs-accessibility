@@ -1,0 +1,878 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner_TDMGLz": {
+      "type": "image-banner",
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "hide_on_mobile": true,
+        "image": "shopify://shop_images/freepik_gere-uma-imagem-desse-pro_2757776676_1.png",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "scheme-5",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true,
+        "banner__buttons-bg": "",
+        "banner__buttons-color": "",
+        "banner__buttons-hover-bg": "",
+        "banner__buttons-hover-color": ""
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "judge_me_reviews_preview_badge_XjXwc9": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "100% Natural dried Worms",
+            "text_style": "body"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "square"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "shippingtext_rWmKX6": {
+          "type": "shippingtext",
+          "settings": {}
+        },
+        "icons_XnGDfp": {
+          "type": "icons",
+          "settings": {
+            "pdp-icon": "shopify://shop_images/fast_shipping_1.png",
+            "Icontext": "Fast Shipping",
+            "image_width": "70",
+            "icons-txt-size": 14
+          }
+        },
+        "icons_QPhgnL": {
+          "type": "icons",
+          "settings": {
+            "pdp-icon": "shopify://shop_images/fast_response_1.png",
+            "Icontext": "Fast response",
+            "image_width": "60",
+            "icons-txt-size": 14
+          }
+        },
+        "icons_8VhAi4": {
+          "type": "icons",
+          "settings": {
+            "pdp-icon": "shopify://shop_images/guaranteed_1.png",
+            "Icontext": "100% guarantee",
+            "image_width": "45",
+            "icons-txt-size": 14
+          }
+        },
+        "icons_qr9ALL": {
+          "type": "icons",
+          "settings": {
+            "pdp-icon": "shopify://shop_images/madeus_1.png",
+            "Icontext": "us made",
+            "image_width": "50",
+            "icons-txt-size": 14
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_preview_badge_XjXwc9",
+        "title",
+        "vendor",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "shippingtext_rWmKX6",
+        "icons_XnGDfp",
+        "icons_QPhgnL",
+        "icons_8VhAi4",
+        "icons_qr9ALL"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-5",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 32
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "multicolumn_7iY4nt": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_CxBK4R": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/5119e0110a9d0ffe5c47791032aff8fe91375861.jpg",
+            "title": "",
+            "text": "<p>Safe, natural, and US-grown. I’m feeding these to my laying hens and the egg yolks are richer in color now.</p>",
+            "link_label": "",
+            "link": "",
+            "author_name": "Rachel Graham",
+            "author_color": "#a65316",
+            "author_size": 13,
+            "author_weight": "700",
+            "rating": "⭐⭐⭐⭐⭐",
+            "star_color": "#aa7d3e",
+            "star_size": 8
+          }
+        },
+        "column_JEpRYk": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/dc130d3a2c1aa40a85125eb81968c11e16978bf6_1.jpg",
+            "title": "",
+            "text": "<p>To be fair, Safe, natural, and US-grown! I’m feeding these to my laying hens and the egg yolks are richer in color now!</p>",
+            "link_label": "",
+            "link": "",
+            "author_name": "Karina Smith",
+            "author_color": "#a65316",
+            "author_size": 13,
+            "author_weight": "700",
+            "rating": "⭐⭐⭐⭐⭐",
+            "star_color": "#aa7d3e",
+            "star_size": 8
+          }
+        },
+        "column_8tfQm7": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/32f66f3641a9c5d57ac88fa180da279a8aeda492.jpg",
+            "title": "",
+            "text": "<p>To my delight, Works great every time. Safe, natural, and US-grown</p>",
+            "link_label": "",
+            "link": "",
+            "author_name": "Allison Wood",
+            "author_color": "#a65316",
+            "author_size": 13,
+            "author_weight": "700",
+            "rating": "⭐⭐⭐⭐⭐",
+            "star_color": "#aa7d3e",
+            "star_size": 8
+          }
+        }
+      },
+      "block_order": [
+        "column_CxBK4R",
+        "column_JEpRYk",
+        "column_8tfQm7"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "multi-coloumn-logo": "shopify://shop_images/Group_66.png",
+        "logo-width": 120,
+        "title": "WHAT OUR CUSTOMERS ARE SAYING?",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "SEE ALL THE REVIEWS",
+        "button_link": "shopify://pages/reviews",
+        "btn-hover-color": "",
+        "btn-hover-bg": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "color_scheme": "scheme-4",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "column_bg": "#ffffff",
+        "multicolumn-radius": 15,
+        "column_padding-left": 0,
+        "column_padding-right": 0,
+        "column_padding-top": 0,
+        "column_padding-bottom": 0,
+        "column_margin_left": 0,
+        "column_margin_right": 0,
+        "coumn-text-color": "#000000",
+        "column_text_font_weight": "600",
+        "multicolumn-btn-bg": "",
+        "multicolumn-btn-color": "#a65316",
+        "multicolumn-btn-border-color": ""
+      }
+    },
+    "impact_features_wVc6MJ": {
+      "type": "impact-features",
+      "blocks": {
+        "card_yfVgUJ": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/craiyon_142011_image.png",
+            "text": "<p><strong>Boost egg strength</strong><br/>and speed up molting with 75% more calcium than standard mealworms.</p>",
+            "card_icon_size": 60,
+            "card_icon_height": 55
+          }
+        },
+        "card_QtzrR7": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/craiyon_141601_image.png",
+            "text": "<p>Premium larvae, globally sourced. We partner with small-scale farmers in the<strong> USA you the best</strong></p>",
+            "card_icon_size": 55,
+            "card_icon_height": 60
+          }
+        },
+        "card_9t6iAH": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/craiyon_141602_image.png",
+            "text": "<p>Black Soldier Fly Larvae are proven to<strong> <br/>boost egg<br/> </strong>production in laying hens</p>",
+            "card_icon_size": 90,
+            "card_icon_height": 60
+          }
+        },
+        "card_LXe76G": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/craiyon_141726_image.png",
+            "text": "<p><strong>100% Natural.</strong> Zero additives, zero preservatives—just pure, wholesome nutrition for your chickens</p>",
+            "card_icon_size": 60,
+            "card_icon_height": 55
+          }
+        }
+      },
+      "block_order": [
+        "card_yfVgUJ",
+        "card_QtzrR7",
+        "card_9t6iAH",
+        "card_LXe76G"
+      ],
+      "name": "Impact Features",
+      "settings": {
+        "bg_color": "#f5e7d4",
+        "text_color": "#000000",
+        "card_bg_color": "#ead8c0",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "text_size_desktop": 16,
+        "text_size_mobile": 14,
+        "heading": "EVERY BAG MAKES A BIG DIFFERENCE",
+        "heading_color": "#201a15",
+        "heading_size_desktop": 40,
+        "heading_size_mobile": 28,
+        "heading_weight": "900",
+        "heading_transform": "uppercase",
+        "center_image": "shopify://shop_images/arrows-adjusted.png",
+        "center_image_mobile": "shopify://shop_images/arrows-mobile.png",
+        "center_image_width": 380,
+        "arrow_icon_size": 60,
+        "icon_size": 80,
+        "icon_size_height": 55,
+        "tl_icon": "shopify://shop_images/craiyon_141154_image.png",
+        "tl_text": "<p><strong>Eco-friendly</strong> protein from black soldier fly larvae</p>",
+        "bl_icon": "shopify://shop_images/craiyon_141235_image_dc916ad3-5e0c-43b8-ac12-dd80909c92c4.png",
+        "bl_text": "<p><strong>Recycles food </strong>waste to reduce landfill impact</p>",
+        "tr_icon": "shopify://shop_images/craiyon_141329_image.png",
+        "tr_text": "<p>Supports <strong>cleaner air</strong> by lowering methane output</p>",
+        "br_icon": "shopify://shop_images/craiyon_141446_image.png",
+        "br_text": "<p>Loved by nature and <strong>happy hens</strong></p>",
+        "cycle-text_highlight_color": "#994e0e"
+      }
+    },
+    "verified_nutrition_FbeQyn": {
+      "type": "verified-nutrition",
+      "blocks": {
+        "feature_7MUNQc": {
+          "type": "feature",
+          "settings": {
+            "text_alignment": "center",
+            "image": "shopify://shop_images/562ebd0ff0b5c5483050c3ee7e2b65e304dda74d.jpg",
+            "card-width": 400,
+            "image_height": 190,
+            "image_fit": "cover",
+            "border_radius": 12,
+            "title": "STRONGER EGGSHELLS",
+            "title_color": "#d19c4a",
+            "title_size": 20,
+            "title_weight": "700",
+            "text": "<p>Packed with up to 50% more calcium than mealworms for tougher, healthier eggs.</p>",
+            "text_color": "#efe6db",
+            "text_size": 18,
+            "text_weight": "400"
+          }
+        },
+        "feature_beeTGW": {
+          "type": "feature",
+          "settings": {
+            "text_alignment": "center",
+            "image": "shopify://shop_images/8cf27c8c321f063bdcc56eb6cf873a00e5e26114.jpg",
+            "card-width": 400,
+            "image_height": 190,
+            "image_fit": "cover",
+            "border_radius": 12,
+            "title": "Vibrant Feathers",
+            "title_color": "#d19c4a",
+            "title_size": 20,
+            "title_weight": "700",
+            "text": "<p>Rich in protein and essential amino acids for glossy, beautiful plumage.</p>",
+            "text_color": "#efe6db",
+            "text_size": 18,
+            "text_weight": "400"
+          }
+        },
+        "feature_PdL94N": {
+          "type": "feature",
+          "settings": {
+            "text_alignment": "center",
+            "image": "shopify://shop_images/8dc9e382ce7b7b767414d03d51a4f2383f76968f.jpg",
+            "card-width": 400,
+            "image_height": 190,
+            "image_fit": "cover",
+            "border_radius": 12,
+            "title": "Pure, Natural Ingredients",
+            "title_color": "#d19c4a",
+            "title_size": 20,
+            "title_weight": "700",
+            "text": "<p>Sustainably sourced grubs delivering premium nutrition — no fillers, no additives, no compromises.</p>",
+            "text_color": "#efe6db",
+            "text_size": 18,
+            "text_weight": "400"
+          }
+        },
+        "feature_BLARrK": {
+          "type": "feature",
+          "settings": {
+            "text_alignment": "center",
+            "image": "shopify://shop_images/00ff69d9dd6b88ee96120e7dfb155518eda8934b.jpg",
+            "card-width": 400,
+            "image_height": 190,
+            "image_fit": "cover",
+            "border_radius": 12,
+            "title": "Loved by chickens",
+            "title_color": "#d19c4a",
+            "title_size": 20,
+            "title_weight": "700",
+            "text": "<p>Over 8,000 five-star reviews from happy flock owners worldwide.</p>",
+            "text_color": "#efe6db",
+            "text_size": 18,
+            "text_weight": "400"
+          }
+        }
+      },
+      "block_order": [
+        "feature_7MUNQc",
+        "feature_beeTGW",
+        "feature_PdL94N",
+        "feature_BLARrK"
+      ],
+      "name": "Feature Grid",
+      "settings": {
+        "bg_color": "#271d16",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "column_gap": 0,
+        "row_gap": 60,
+        "heading": "VERIFIED NUTRITION. VISIBLE RESULTS.",
+        "heading_color": "#e7d6bf",
+        "heading_size": 36,
+        "heading_weight": "900",
+        "heading_alignment": "center"
+      }
+    },
+    "text_with_image_bar_UFyXdK": {
+      "type": "text-with-image-bar",
+      "blocks": {
+        "image_block_cLJEfi": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/flag_1_457c3f01-9ca9-442f-923e-1ed0d384eca3.png",
+            "img_width": 100,
+            "img_height": 110
+          }
+        },
+        "image_block_KQBpKd": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/craiyon.webp",
+            "img_width": 100,
+            "img_height": 110
+          }
+        },
+        "image_block_aGMn9L": {
+          "type": "image_block",
+          "settings": {
+            "image": "shopify://shop_images/drop.webp",
+            "img_width": 100,
+            "img_height": 100
+          }
+        }
+      },
+      "block_order": [
+        "image_block_cLJEfi",
+        "image_block_KQBpKd",
+        "image_block_aGMn9L"
+      ],
+      "name": "Text with Image Bar",
+      "settings": {
+        "bg_color": "#e9d8c0",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "alignment": "center",
+        "title": "Backed by Nature",
+        "title_color": "#201a15",
+        "title_size": 36,
+        "title_weight": "700",
+        "title_transform": "uppercase",
+        "Paragraph": "<p><strong>Made in the USA <br/></strong>Puregrubs larvae are farm raised in the USA only. We support small farms in America. These black soldier fly grubs are 100% sustainably-grown. BSFL can consume food scraps and agricultural byproducts—transforming waste that would otherwise go to landfills into high-value protein and compost. BSFL farming can be done in compact spaces and uses significantly less water than traditional livestock, making it ideal for sustainable agriculture. When raised on American farms, BSFL keep resources local—turning nearby waste into feed and fertilizer instead of relying on imported inputs.</p>",
+        "text_color": "#000000",
+        "text_size": 13,
+        "text_weight": "400",
+        "text_transform": "none"
+      }
+    },
+    "four_feature_product_CgK9Fx": {
+      "type": "four-feature-product",
+      "blocks": {
+        "feature_4hC9et": {
+          "type": "feature",
+          "settings": {
+            "position": "left",
+            "icon": "shopify://shop_images/a21ba3fe63936e8e749d8916148890a6fddac4d8.jpg",
+            "image_fit": "cover",
+            "title": "<p>Richer Egg Yolks</p>",
+            "text": "",
+            "margin_top": 15,
+            "margin_bottom": 0
+          }
+        },
+        "feature_MfwUVQ": {
+          "type": "feature",
+          "settings": {
+            "position": "left",
+            "icon": "shopify://shop_images/256e45a1672588725ec8da82f0fb62e74e33a1ef.jpg",
+            "image_fit": "cover",
+            "title": "<p>Happier Hens</p>",
+            "text": "",
+            "margin_top": 15,
+            "margin_bottom": 0
+          }
+        },
+        "feature_ymUjnc": {
+          "type": "feature",
+          "settings": {
+            "position": "right",
+            "icon": "shopify://shop_images/90cbfaf2e19dc898364c1d4ef9881cfe9b8424bb.jpg",
+            "image_fit": "cover",
+            "title": "<p>Stronger Shells</p>",
+            "text": "",
+            "margin_top": 15,
+            "margin_bottom": 0
+          }
+        },
+        "feature_PYQc3C": {
+          "type": "feature",
+          "settings": {
+            "position": "right",
+            "icon": "shopify://shop_images/6429a850704db9dafb3b82cddc363f142dc93858.jpg",
+            "image_fit": "cover",
+            "title": "<p>better feathers</p>",
+            "text": "",
+            "margin_top": 15,
+            "margin_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "feature_4hC9et",
+        "feature_MfwUVQ",
+        "feature_ymUjnc",
+        "feature_PYQc3C"
+      ],
+      "name": "Four Feature Product",
+      "settings": {
+        "heading": "<p>What You’ll Notice</p>",
+        "subtext": "<p>Pure Grubs naturally enhances your chickens’ nutrition from the inside out so every egg they lay reflects the clean lifestyle you believe in.</p>",
+        "subtext-color": "",
+        "heading_text_transform": "uppercase",
+        "heading_size": 32,
+        "heading_weight": "700",
+        "heading_color": "#2b2b2b",
+        "highlight_color": "#c96b2c",
+        "main_image": "shopify://shop_images/craiyon_230321_image.webp",
+        "arrow_image": "shopify://shop_images/arrow.png",
+        "image_width": 400,
+        "title_size": 16,
+        "title_weight": "600",
+        "title_color": "#a65316",
+        "text_transform": "uppercase",
+        "text_size": 14,
+        "text_color": "#666666",
+        "icon_width": 140,
+        "icon_height": 140,
+        "feature_img_radius": 100,
+        "text_align": "center",
+        "alignment": "center",
+        "bg_color": "#f3e6d7",
+        "button_text": "",
+        "button_url": "",
+        "btn_bg": "#a55a2a",
+        "btn_text": "#ffffff",
+        "btn_hover_bg": "#7a3e1c",
+        "btn_hover_text": "#ffffff"
+      }
+    },
+    "multi_species_XhLbLr": {
+      "type": "multi-species",
+      "blocks": {
+        "feature_V3cwqw": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/craiyon_203449_image_c2bd8d2b-0b70-4340-866e-370448802ad3.png",
+            "image_fit": "contain",
+            "title": "<p><strong>FISH<br/></strong>NATURAL FLOATING SNACK</p>",
+            "text": "",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "feature_BQVNYg": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/image_9_2.png",
+            "image_fit": "contain",
+            "title": "<p><strong>FISH<br/></strong>NATURAL FLOATING SNACK</p>",
+            "text": "",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "feature_gk8CHF": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/craiyon_214833_image_4bdfc0cc-e89d-49bc-adf7-e4cdc49277af.png",
+            "image_fit": "contain",
+            "title": "<p><strong>FISH<br/></strong>NATURAL FLOATING SNACK</p>",
+            "text": "",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "feature_TdibCA": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/craiyon_214946_image_a56dd632-f8ad-4e72-b319-e58a75ec8ebf.png",
+            "image_fit": "contain",
+            "title": "<p><strong>FISH<br/></strong>NATURAL FLOATING SNACK</p>",
+            "text": "",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "feature_V3cwqw",
+        "feature_BQVNYg",
+        "feature_gk8CHF",
+        "feature_TdibCA"
+      ],
+      "custom_css": [
+        ".chicken-section.four-feature-product-section {background: radial-gradient(circle, #f2ebe4 0%, rgba(206, 176, 138, 1) 100%);}",
+        ".feature p strong {font-weight: bold !important;}",
+        ".feature p {font-weight: normal !important; color: black !important;}",
+        "@media (max-width: 600px) {.feature {min-width: 123px; max-width: 123px; }}"
+      ],
+      "name": "Multi Species",
+      "settings": {
+        "heading": "<p>MULTI-SPECIES USE</p>",
+        "subtext": "<p>A sustainable and nutrient-rich feed solution, our larvae are specially cultivated to support the health <br/>and growth of chickens while also being suitable for a wide variety of other animals. </p>",
+        "subtext-color": "",
+        "heading_text_transform": "none",
+        "heading_size": 32,
+        "heading_weight": "700",
+        "heading_color": "#79664b",
+        "highlight_color": "#c96b2c",
+        "image_width": 260,
+        "title_size": 14,
+        "title_weight": "600",
+        "title_color": "#000000",
+        "text_transform": "none",
+        "text_size": 14,
+        "text_color": "#000000",
+        "icon_width": 200,
+        "icon_height": 150,
+        "feature_img_radius": 20,
+        "text_align": "center",
+        "alignment": "center",
+        "bg_color": "#f3e6d7",
+        "button_text": "",
+        "button_url": "",
+        "btn_bg": "#a55a2a",
+        "btn_text": "#ffffff",
+        "btn_hover_bg": "#7a3e1c",
+        "btn_hover_text": "#ffffff"
+      }
+    },
+    "video_column_TPBjWf": {
+      "type": "video-column",
+      "blocks": {
+        "video_wpnBkd": {
+          "type": "Video",
+          "settings": {
+            "video_file": "shopify://files/videos/1.mp4",
+            "video_radius": 12,
+            "video_width": 200,
+            "video_height": 310,
+            "video_url": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_controls": false
+          }
+        },
+        "video_GcdAL7": {
+          "type": "Video",
+          "settings": {
+            "video_file": "shopify://files/videos/review-2.mp4",
+            "video_radius": 12,
+            "video_width": 200,
+            "video_height": 310,
+            "video_url": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_controls": false
+          }
+        },
+        "video_BANWp9": {
+          "type": "Video",
+          "settings": {
+            "video_file": "shopify://files/videos/review-3.mp4",
+            "video_radius": 12,
+            "video_width": 200,
+            "video_height": 310,
+            "video_url": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_controls": false
+          }
+        },
+        "video_C9WG6j": {
+          "type": "Video",
+          "settings": {
+            "video_file": "shopify://files/videos/review-1.mp4",
+            "video_radius": 12,
+            "video_width": 200,
+            "video_height": 310,
+            "video_url": "",
+            "video_autoplay": true,
+            "video_loop": true,
+            "video_controls": false
+          }
+        }
+      },
+      "block_order": [
+        "video_wpnBkd",
+        "video_GcdAL7",
+        "video_BANWp9",
+        "video_C9WG6j"
+      ],
+      "custom_css": [
+        "@media (max-width: 600px) {.video-column-heading p {font-size: 34px; line-height: 1; }}"
+      ],
+      "name": "Video Column",
+      "settings": {
+        "bg_color": "#f5e7d4",
+        "video_heading": "<p>TRUSTED BY FARMERS.<br/>LOVED BY CHICKENS.</p>",
+        "video_heading_align": "center",
+        "video_heading_color": "#6c5b43",
+        "video_heading_size": 40,
+        "video_heading_weight": "700",
+        "padding_top": 70,
+        "padding_bottom": 60
+      }
+    },
+    "faq_section_hFLRQK": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_item_UjaCFd": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are these black soldier fly larvae for chickens made in the USA or imported?",
+            "answer": "<p>Yes! PureGrubs are 100% USA-grown and dried, unlike many brands like Joyprotyn and WormsFarm that import from China. Clean, traceable nutrition you can trust.</p>"
+          }
+        },
+        "faq_item_L9wkTD": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do these compare to GrubTerra black soldier fly larvae in nutrition?",
+            "answer": "<p>PureGrubs match GrubTerra in protein but go further with domestic sourcing, low-temp drying, and plant-fed grubs — all for superior freshness and performance.</p>"
+          }
+        },
+        "faq_item_XxRewx": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are they similar to Grubbly Farms grubs for chickens?",
+            "answer": "<p>Similar concept, but PureGrubs offer bulk sizing, are 100% USA-dried, and contain higher calcium content, making them ideal for egg-laying hens.</p>"
+          }
+        },
+        "faq_item_g4XEEy": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do these compare to Hatortempt BSFL in quality and value?",
+            "answer": "<p>Hatortempt is well-known, but PureGrubs are fresh-dried, crispy, and USA-produced — with 85% more calcium than mealworms. Better value, better results.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_UjaCFd",
+        "faq_item_L9wkTD",
+        "faq_item_XxRewx",
+        "faq_item_g4XEEy"
+      ],
+      "name": "Custom FAQ Section",
+      "settings": {
+        "enable_more_less": true,
+        "more_text": "+ View More",
+        "less_text": "- View Less",
+        "section_bg_color": "#f5e7d4",
+        "padding_top": 4,
+        "padding_bottom": 72,
+        "heading_text": "FAQ",
+        "heading_color": "#79664b",
+        "heading_font_size": 36,
+        "heading_font_weight": "700",
+        "heading_transform": "uppercase",
+        "heading_alignment": "left",
+        "question_color": "#464646",
+        "question_font_size": 16,
+        "question_font_weight": "400",
+        "answer_color": "#464646",
+        "answer_font_size": 14,
+        "answer_font_weight": "400",
+        "icon_width": 20,
+        "icon_height": 20,
+        "btn_text": "CHECK OUR FAQ SESSION",
+        "btn_url": "shopify://pages/faqs",
+        "btn_alignment": "center",
+        "btn_bg_color": "rgba(0,0,0,0)",
+        "btn_border_color": "#8d8d8d",
+        "btn_text_color": "#464646",
+        "btn_font_size": 14,
+        "btn_font_weight": "600",
+        "btn_margin_top": 56,
+        "btn_margin_bottom": 20
+      }
+    },
+    "177947975742339724": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_JRUcQt": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_JRUcQt"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "newsletter_custom_CantQB": {
+      "type": "newsletter-custom",
+      "name": "Custom Newsletter Block",
+      "settings": {
+        "section_bg_color": "#e6ceb3",
+        "main_heading": "<p>Join us and get the tools you need for a healthier, more productive farm.</p>",
+        "heading_font_size": 24,
+        "heading_font_weight": "700",
+        "heading_color": "#1a1a1a",
+        "heading_alignment": "left",
+        "sub_text": "Join +20,000 subscribers",
+        "subtext_font_size": 14,
+        "subtext_font_weight": "400",
+        "subtext_color": "#7a6b5d",
+        "subtext_alignment": "left",
+        "placeholder_name": "First name",
+        "placeholder_email": "Email",
+        "input_bg_color": "#f4ebd8",
+        "input_text_color": "#333333",
+        "button_text": "JOIN FOR FREE",
+        "button_bg_color": "#9e5320",
+        "button_text_color": "#ffffff",
+        "button_hover_bg": "#7a3f18",
+        "button_hover_text": "#ffffff",
+        "image": "shopify://shop_images/Layer_1_1.png",
+        "image_width": 30
+      }
+    }
+  },
+  "order": [
+    "image_banner_TDMGLz",
+    "main",
+    "related-products",
+    "multicolumn_7iY4nt",
+    "impact_features_wVc6MJ",
+    "verified_nutrition_FbeQyn",
+    "text_with_image_bar_UFyXdK",
+    "four_feature_product_CgK9Fx",
+    "multi_species_XhLbLr",
+    "video_column_TPBjWf",
+    "faq_section_hFLRQK",
+    "177947975742339724",
+    "newsletter_custom_CantQB"
+  ]
+}

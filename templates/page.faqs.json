@@ -1,0 +1,506 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_banner_W993h7": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_UeEikk": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>NEED HELP? WE ARE HERE FOR YOU</p>",
+            "heading_size": "hxl"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UeEikk"
+      ],
+      "settings": {
+        "hide_on_mobile": false,
+        "image": "shopify://shop_images/02436f10b5c9fd63af9d91d949454db12fc16193.png",
+        "image_overlay_opacity": 40,
+        "image_height": "small",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-a368e2f6-ac2e-4255-bcbf-79a8b9e2a122",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false,
+        "banner__buttons-bg": "#a65316",
+        "banner__buttons-color": "#ffffff",
+        "banner__buttons-hover-bg": "#84410f",
+        "banner__buttons-hover-color": "#ffffff"
+      }
+    },
+    "search_and_heading_4xnDib": {
+      "type": "search-and-heading",
+      "name": "Search Field",
+      "settings": {
+        "bg-color": "#f5e7d4",
+        "heading": "search your doubt",
+        "heading_color": "#79664b",
+        "heading_font_size": 36,
+        "heading_font_weight": "700",
+        "heading_transform": "uppercase",
+        "placeholder": "Type your question here"
+      }
+    },
+    "images_columns_JwaNCm": {
+      "type": "images-columns",
+      "blocks": {
+        "column_dHpfUX": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/craiyon_143452_image.png",
+            "image_width": 70,
+            "image_height": 60,
+            "block_text": "Track Order",
+            "block_text_color": "#624720",
+            "block_text_size": 14,
+            "block_text_weight": "500",
+            "block_text_alignment": "center"
+          }
+        },
+        "column_Ud7gxc": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/craiyon_143503_image.png",
+            "image_width": 60,
+            "image_height": 60,
+            "block_text": "Return Order",
+            "block_text_color": "#624720",
+            "block_text_size": 14,
+            "block_text_weight": "500",
+            "block_text_alignment": "center"
+          }
+        },
+        "column_374zBa": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/craiyon_143544_image.png",
+            "image_width": 80,
+            "image_height": 70,
+            "block_text": "Report Issue",
+            "block_text_color": "#624720",
+            "block_text_size": 14,
+            "block_text_weight": "500",
+            "block_text_alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "column_dHpfUX",
+        "column_Ud7gxc",
+        "column_374zBa"
+      ],
+      "name": "images Column",
+      "settings": {
+        "section_bg_color": "#f5e7d4",
+        "section_text": "",
+        "text_alignment": "center",
+        "text_color": "#000000",
+        "text_size": 28,
+        "text_weight": "700",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "border_color": "#0000005c",
+        "border_radius": 10
+      }
+    },
+    "faq_section_d3Vkq4": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_item_UjaCFd": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are these black soldier fly larvae for chickens made in the USA or imported?",
+            "answer": "<p>Yes! PureGrubs are 100% USA-grown and dried, unlike many brands like Joyprotyn and WormsFarm that import from China. Clean, traceable nutrition you can trust.</p>",
+            
+          }
+        },
+        "faq_item_L9wkTD": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do these compare to GrubTerra black soldier fly larvae in nutrition?",
+            "answer": "<p>PureGrubs match GrubTerra in protein but go further with domestic sourcing, low-temp drying, and plant-fed grubs — all for superior freshness and performance.</p>",
+            
+          }
+        },
+        "faq_item_XxRewx": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are they similar to Grubbly Farms grubs for chickens?",
+            "answer": "<p>Similar concept, but PureGrubs offer bulk sizing, are 100% USA-dried, and contain higher calcium content, making them ideal for egg-laying hens.</p>",
+            
+          }
+        },
+        "faq_item_g4XEEy": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do these compare to Hatortempt BSFL in quality and value?",
+            "answer": "<p>Hatortempt is well-known, but PureGrubs are fresh-dried, crispy, and USA-produced — with 85% more calcium than mealworms. Better value, better results.</p>",
+            
+          }
+        },
+        "faq_item_i9Myhi": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I feed this to ducks and reptiles or just chickens?",
+            "answer": "<p>Absolutely! PureGrubs are great for chickens, ducks, birds, reptiles, hedgehogs, and fish — just like the best multi-species options from WormsKing and Classic Flock.</p>",
+            
+          }
+        },
+        "faq_item_JbaaEL": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are these black soldier fly larvae better than mealworms for chickens?",
+            "answer": "<p>Yes! They provide 85% more calcium, 2x more protein, and help improve eggshell strength, feather regrowth, and immune health — a major upgrade from basic dried mealworms.</p>",
+            
+          }
+        },
+        "faq_item_pagcP7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do they compare to WormsFarm BSFL in freshness and smell?",
+            "answer": "<p>Our low-temperature drying process keeps them crisp and clean-smelling. Customers often say PureGrubs stay fresher longer and smell way better than WormsFarm alternatives.</p>",
+            
+          }
+        },
+        "faq_item_nLcqCQ": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do these work better for molting season than Joyprotyn grubs?",
+            "answer": "<p>Yes — PureGrubs contain more calcium and protein per serving, making them ideal during molt to support feather regrowth and recovery.</p>",
+            
+          }
+        },
+        "faq_item_3KAcaR": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will this help my hens lay more eggs or stronger shells?",
+            "answer": "<p>Absolutely. The high calcium content directly supports stronger eggshells, improved consistency, and better overall production.</p>",
+            
+          }
+        },
+        "faq_item_UaWm7V": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are these grubs raised on clean feed like Grubbly Farms claims?",
+            "answer": "<p>Yes! PureGrubs larvae are raised on clean, plant-based feed, never trash or waste, ensuring safety and nutrient density for your flock.</p>",
+            
+          }
+        },
+        "faq_item_cAzzCi": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are they non-GMO and additive-free?",
+            "answer": "<p>100%! Our product has no preservatives, fillers, or additives — just pure, non-GMO black soldier fly larvae grown and dried in the USA.</p>",
+            
+          }
+        },
+        "faq_item_DNJJcw": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I use these for chicks or just adult hens?",
+            "answer": "<p>You can absolutely feed them to chicks! Just crush or soak the grubs slightly to help younger birds digest them easily.</p>",
+            
+          }
+        },
+        "faq_item_NWftbn": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I mix this with my existing chicken feed?",
+            "answer": "<p>Yes! PureGrubs mix easily with scratch grains, layer pellets, or can be fed solo as a high-value treat.</p>",
+            
+          }
+        },
+        "faq_item_R6GedT": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do they compare to WormsKing or Classic Flock in taste and appearance?",
+            "answer": "<p>Customers often say chickens prefer the crisp texture and uniform size of PureGrubs. Our grubs aren’t dusty, soggy, or broken like many competitors.</p>",
+            
+          }
+        },
+        "faq_item_L9nEH4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can these help with coop recall or training?",
+            "answer": "<p>Definitely! Just shake the bag and your flock will come running. Many customers say it’s their #1 trick for rounding up free-range birds.</p>",
+            
+          }
+        },
+        "faq_item_7qN73M": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What makes PureGrubs better than GrubTerra or Hatortempt?",
+            "answer": "<p>Three things: (1) 100% USA-grown and dried; (2) 85% more calcium than mealworms; (3) Zero additives or artificial drying.</p>",
+            
+          }
+        },
+        "faq_item_zeyFLb": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are they really suitable for wild birds too?",
+            "answer": "<p>Yes! Bluebirds, robins, cardinals — they all love BSFL. It’s a great natural protein treat for wild birds, just like Grubbly Farms wild bird feed.</p>",
+            
+          }
+        },
+        "faq_item_MQ8tjK": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do they stay fresh once the bag is opened?",
+            "answer": "<p>Not at all. Thanks to our gentle drying method, PureGrubs have a neutral, clean smell — no fishy odor or soggy crumbs.</p>",
+            
+          }
+        },
+        "faq_item_ywAWnh": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is this product good during winter feeding?",
+            "answer": "<p>Yes! With 30–40% healthy fats, it provides lasting energy and warmth during colder months, helping your flock stay productive.</p>",
+            
+          }
+        },
+        "faq_item_jWkiiL": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do these compare to the 10lb Hatortempt black soldier fly larvae for chickens?",
+            "answer": "<p>Hatortempt is solid, but PureGrubs uses only USA-grown larvae and low-heat drying to lock in more nutrients per bite — with better freshness and feed response.</p>",
+            
+          }
+        },
+        "faq_item_zbXzKa": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are these a good alternative to dried soldier fly larvae bulk packs?",
+            "answer": "<p>Yes — you get bulk value, but without sacrificing freshness or ethical sourcing. We’re proud to be Made in USA, not just packaged here.</p>",
+            
+          }
+        },
+        "faq_item_LpRHQq": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are they safe for daily feeding or only as a treat?",
+            "answer": "<p>Safe for both! While they're nutrient-dense, many customers mix a handful daily into scratch or pellets for continuous benefits.</p>",
+            
+          }
+        },
+        "faq_item_qHytfe": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is this better than Grubblies for chickens for year-round use?",
+            "answer": "<p>Yes — PureGrubs offer bulk savings, better storage life, and are just as palatable — but sourced and dried completely in the USA.</p>",
+            
+          }
+        },
+        "faq_item_tHGfVy": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What’s the difference between black soldier fly larvae and mealworms?",
+            "answer": "<p>BSFL have higher calcium, better fat content, and more protein. They’re a functional feed, not just a snack — which is why they’re preferred by flock owners who care about eggs.</p>",
+            
+          }
+        },
+        "faq_item_7KiYXr": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are PureGrubs crushed or whole?",
+            "answer": "<p>They’re whole and lightly dried, so they’re easy to crush if needed, but most chickens love them as-is thanks to the crispy texture.</p>",
+            
+          }
+        },
+        "faq_item_7dkn9P": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I feed these to hedgehogs or fish?",
+            "answer": "<p>Yes! Many pet owners use them as a protein treat for reptiles, fish, amphibians, and hedgehogs — just portion accordingly.</p>",
+            
+          }
+        },
+        "faq_item_xMzJgY": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What size are the grubs compared to other brands like WormsKing?",
+            "answer": "<p>Ours are medium to large, consistent in size, and dried to a perfect crunch — not shriveled or mushy like many lower-cost options.</p>",
+            
+          }
+        },
+        "faq_item_4d94hb": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer Subscribe & Save like Grubbly Farms?",
+            "answer": "<p>Yes! PureGrubs is available on Subscribe & Save so you never run out. It’s convenient, cost-effective, and loved by repeat customers.</p>",
+            
+          }
+        },
+        "faq_item_86Qpnq": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I use this for sustainable farming or composting systems?",
+            "answer": "<p>Absolutely! BSFL are a regenerative, eco-friendly protein source — perfect for circular farming and compost integration.</p>",
+            
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_UjaCFd",
+        "faq_item_L9wkTD",
+        "faq_item_XxRewx",
+        "faq_item_g4XEEy",
+        "faq_item_i9Myhi",
+        "faq_item_JbaaEL",
+        "faq_item_pagcP7",
+        "faq_item_nLcqCQ",
+        "faq_item_3KAcaR",
+        "faq_item_UaWm7V",
+        "faq_item_cAzzCi",
+        "faq_item_DNJJcw",
+        "faq_item_NWftbn",
+        "faq_item_R6GedT",
+        "faq_item_L9nEH4",
+        "faq_item_7qN73M",
+        "faq_item_zeyFLb",
+        "faq_item_MQ8tjK",
+        "faq_item_ywAWnh",
+        "faq_item_jWkiiL",
+        "faq_item_zbXzKa",
+        "faq_item_LpRHQq",
+        "faq_item_qHytfe",
+        "faq_item_tHGfVy",
+        "faq_item_7KiYXr",
+        "faq_item_7dkn9P",
+        "faq_item_xMzJgY",
+        "faq_item_4d94hb",
+        "faq_item_86Qpnq"
+      ],
+      "name": "Custom FAQ Section",
+      "settings": {
+        "enable_more_less": true,
+        "more_text": "+ View More",
+        "less_text": "- View Less",
+        "section_bg_color": "#f5e7d4",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "heading_text": "",
+        "heading_color": "#6b5d4a",
+        "heading_font_size": 36,
+        "heading_font_weight": "700",
+        "heading_transform": "uppercase",
+        "heading_alignment": "left",
+        "question_color": "#4a4a4a",
+        "question_font_size": 18,
+        "question_font_weight": "400",
+        "answer_color": "#666666",
+        "answer_font_size": 16,
+        "answer_font_weight": "400",
+        "icon_width": 20,
+        "icon_height": 20,
+        "btn_text": "",
+        "btn_url": "",
+        "btn_alignment": "center",
+        "btn_bg_color": "rgba(0,0,0,0)",
+        "btn_border_color": "#b0a597",
+        "btn_text_color": "#4a4a4a",
+        "btn_font_size": 14,
+        "btn_font_weight": "600",
+        "btn_margin_top": 50,
+        "btn_margin_bottom": 20
+      }
+    },
+    "rich_text_iFh86J": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_RMp8FX": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>STILL WITH PROBLEMS?</strong>",
+            "heading_size": "h1",
+            "letter_spacing": 0
+          }
+        },
+        "button2_HLCK8Q": {
+          "type": "button2",
+          "settings": {
+            "btn2_text": "CONTACT US",
+            "btn2_url": "",
+            "btn2_text_color": "#464646",
+            "btn2_bg_color": "rgba(0,0,0,0)",
+            "btn2_border_color": "#8d8d8d",
+            "btn2_hover_text_color": "#464646",
+            "btn2_hover_bg_color": "rgba(0,0,0,0)",
+            "btn2_hover_border_color": "#515151"
+          }
+        }
+      },
+      "block_order": [
+        "heading_RMp8FX",
+        "button2_HLCK8Q"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-5",
+        "full_width": true,
+        "padding_top": 20,
+        "padding_bottom": 100
+      }
+    },
+    "newsletter_custom_DGqfr9": {
+      "type": "newsletter-custom",
+      "name": "Custom Newsletter Block",
+      "settings": {
+        "section_bg_color": "#e6ceb3",
+        "main_heading": "<p>Join us and get the tools you need for a healthier, more productive farm.</p>",
+        "heading_font_size": 24,
+        "heading_font_weight": "700",
+        "heading_color": "#1a1a1a",
+        "heading_alignment": "left",
+        "sub_text": "Join +20,000 subscribers",
+        "subtext_font_size": 14,
+        "subtext_font_weight": "400",
+        "subtext_color": "#7a6b5d",
+        "subtext_alignment": "left",
+        "placeholder_name": "First name",
+        "placeholder_email": "Email",
+        "input_bg_color": "#f4ebd8",
+        "input_text_color": "#333333",
+        "button_text": "JOIN FOR FREE",
+        "button_bg_color": "#9e5320",
+        "button_text_color": "#ffffff",
+        "button_hover_bg": "#7a3f18",
+        "button_hover_text": "#ffffff",
+        "image": "shopify://shop_images/Layer_1_1_6bc88e81-7872-4c87-898c-59252977895d.png",
+        "image_width": 30
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_W993h7",
+    "search_and_heading_4xnDib",
+    "images_columns_JwaNCm",
+    "faq_section_d3Vkq4",
+    "rich_text_iFh86J",
+    "newsletter_custom_DGqfr9"
+  ]
+}

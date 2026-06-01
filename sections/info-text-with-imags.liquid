@@ -1,0 +1,228 @@
+{{ 'info-text-with-imags.css' | asset_url | stylesheet_tag }}
+
+<style>
+   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+   @font-face {
+          font-family: 'Noto_Sans_Condensed_bold';
+          src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+   }
+  #info-text-with-images{
+   background-color:{{ section.settings.section-bg-color }}
+  }
+  #info-text-with-images section{
+    display:flex;
+    flex-direction:column;
+    text-align:{{ section.settings.content_alignment }};
+
+  }
+  #info-text-with-images section .info-text-wrapper h2{
+    font-size:{{ section.settings.heading_font_size }}px;
+    color:{{ section.settings.heading_color }};
+    font-weight:{{ section.settings.heading_font_weight }};
+    margin:0;
+    font-family: "Noto Sans", sans-serif;
+  }
+  #info-text-with-images section .info-text-wrapper p{
+    font-size:{{section.settings.text_font_size }}px;
+    color:{{section.settings.text_color }};
+    font-weight:{{ section.settings.text_font_weight }};
+    margin:0;
+    font-family: "Noto Sans", sans-serif;
+  }
+  #info-text-with-images section .info-text-wrapper a{
+    color:{{ section.settings.button_text_color }};
+    font-size:{{ section.settings.button_font_size }}px;
+    background:{{ section.settings.button_bg }};
+    font-family: "Noto Sans", sans-serif;
+
+  }
+   #info-text-with-images section .info-text-wrapper a:hover{
+     background:{{ section.settings.button_hover_bg }};
+     color:{{ section.settings.button_hover_text_color }}
+  }
+</style>
+<div id="info-text-with-images">
+  <div class="info-text-with-images-img"><img src="{{ section.settings.image_1 |  img_url: 'master' }}"></div>
+  <section class="page-width">
+    <div class="info-text-wrapper ">
+      <h2 class="font-noto-sans">{{ section.settings.heading }}</h2>
+      <p class="font-noto-sans">{{ section.settings.text }}</p>
+      <div>
+        <a class="font-noto-sans" href="{{section.settings.button_url }}">{{ section.settings.button_label }}</a>
+      </div>
+    </div>
+  </section>
+  <div class="info-text-with-images-img"><img src="{{ section.settings.image_2 |  img_url: 'master' }}"></div>
+</div>
+
+{% schema %}
+{
+  "name": "Info text with images",
+
+  "settings": [
+    {
+      "type": "color",
+      "id": "section-bg-color",
+      "label": "Choose Background Color"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "end", "label": "Right" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading Font Size",
+      "min": 12,
+      "max": 80,
+      "step": 1,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading Font Weight",
+      "default": "700",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "900", "label": "ExtraBold" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+
+    {
+      "type": "header",
+      "content": "Rich Text"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Your description here</p>"
+    },
+    {
+      "type": "range",
+      "id": "text_font_size",
+      "label": "Text Font Size",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "text_font_weight",
+      "label": "Text Font Weight",
+      "default": "400",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Name",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button Font Size",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Button Hover Background",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Button Hover Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Info text with images"
+    }
+  ]
+}
+{% endschema %}

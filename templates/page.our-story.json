@@ -1,0 +1,139 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_banner_W993h7": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_UeEikk": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>OUR STORY</p>",
+            "heading_size": "hxl"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UeEikk"
+      ],
+      "settings": {
+        "hide_on_mobile": false,
+        "image": "shopify://shop_images/79dbe0a9525af60d64e1e0ad854948c003085385.png",
+        "image_overlay_opacity": 40,
+        "image_height": "small",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-a368e2f6-ac2e-4255-bcbf-79a8b9e2a122",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false,
+        "banner__buttons-bg": "#a65316",
+        "banner__buttons-color": "#ffffff",
+        "banner__buttons-hover-bg": "#84410f",
+        "banner__buttons-hover-color": "#ffffff"
+      }
+    },
+    "rich_text_iFh86J": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_RMp8FX": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>BORN FROM THE COOP</strong>",
+            "heading_size": "h1",
+            "letter_spacing": -5
+          }
+        },
+        "text_wGJeWV": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At PureGrubs, we started with a simple mission — to bring honest, high-quality nutrition to backyard chickens while supporting American farmers, workers, and families.We saw the growing flood of imported insect products from overseas — often labeled as “natural” but with no real transparency or quality control. That didn’t sit right with us. We believed there had to be a better way.<br/>So, we rolled up our sleeves and decided to grow our own Black Soldier Fly Larvae (BSFL) right here in the USA. No middlemen. No overseas factories. Just clean, sustainable, nutrient-rich grubs — raised under our watch, with care and consistency.<br/>What began as a small, bootstrapped idea in a garage — a few bins, a lot of late nights, and a deep belief in doing things the right way — has grown into a brand trusted by chicken owners nationwide. Every bag of PureGrubs supports American jobs, local agriculture, and the values that built this country: hard work, integrity, and pride in what we make.<br/>We don’t take shortcuts, and we don’t compromise on quality. From our farm to your flock, PureGrubs stands for freshness, honesty, and American-made excellence — because your chickens deserve the best, and so does our country.<br/>PureGrubs — Bugs Feed the World. Made Right Here at Home. 🇺🇸</p>",
+            "text-color": "#e4caaa",
+            "text_font_weight": "500"
+          }
+        }
+      },
+      "block_order": [
+        "heading_RMp8FX",
+        "text_wGJeWV"
+      ],
+      "custom_css": [
+        "@media (max-width: 600px) {.rich-text {padding-top: 40px; padding-bottom: 40px; } .rich-text__heading {font-size: 34px; } .rich-text__wrapper {width: 100%; }}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 100,
+        "padding_bottom": 100
+      }
+    },
+    "image_pf78D8": {
+      "type": "Image",
+      "name": "Image Section",
+      "settings": {
+        "section_bg": "#261f1a",
+        "image": "shopify://shop_images/bf2a192598f1668444977613cd9013db9637311c.jpg",
+        "image_width": 900,
+        "image_radius": 10,
+        "image_fit": "contain",
+        "padding_top": 20,
+        "padding_bottom": 120
+      }
+    },
+    "newsletter_custom_DGqfr9": {
+      "type": "newsletter-custom",
+      "name": "Custom Newsletter Block",
+      "settings": {
+        "section_bg_color": "#e6ceb3",
+        "main_heading": "<p>Join us and get the tools you need for a healthier, more productive farm.</p>",
+        "heading_font_size": 24,
+        "heading_font_weight": "700",
+        "heading_color": "#1a1a1a",
+        "heading_alignment": "left",
+        "sub_text": "Join +20,000 subscribers",
+        "subtext_font_size": 14,
+        "subtext_font_weight": "400",
+        "subtext_color": "#7a6b5d",
+        "subtext_alignment": "left",
+        "placeholder_name": "First name",
+        "placeholder_email": "Email",
+        "input_bg_color": "#f4ebd8",
+        "input_text_color": "#333333",
+        "button_text": "JOIN FOR FREE",
+        "button_bg_color": "#9e5320",
+        "button_text_color": "#ffffff",
+        "button_hover_bg": "#7a3f18",
+        "button_hover_text": "#ffffff",
+        "image": "shopify://shop_images/No1.png",
+        "image_width": 30
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_W993h7",
+    "rich_text_iFh86J",
+    "image_pf78D8",
+    "newsletter_custom_DGqfr9"
+  ]
+}

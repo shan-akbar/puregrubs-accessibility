@@ -1,0 +1,329 @@
+<style>
+     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+     @font-face {
+       font-family: 'Noto_Sans_Condensed_bold';
+       src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+     }
+    #text-with-img-bar-{{ section.id }}{
+      background: radial-gradient(circle, #F2EBE4 0%, rgba(206, 176, 138, 1) 100%);
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      text-align: {{ section.settings.alignment }};
+    }
+
+    /* Title */
+    #text-with-img-bar-{{ section.id }} .title{
+      color: {{ section.settings.title_color }};
+      font-size: {{ section.settings.title_size }}px;
+      font-weight: {{ section.settings.title_weight }};
+      text-transform: {{ section.settings.title_transform }};
+      font-family: 'Noto_Sans_Condensed_bold';
+    }
+
+    /* Paragraph */
+    #text-with-img-bar-{{ section.id }} .rt{
+      color: {{ section.settings.text_color }};
+      font-size: 14px;
+      font-weight: {{ section.settings.text_weight }};
+      text-transform: {{ section.settings.text_transform }};
+      line-height: 20px;
+      margin-top: 4rem;
+      margin-bottom: 6rem;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+     #text-with-img-bar-{{ section.id }} .image-div{
+      display: flex;
+     }
+
+    /* Image */
+    #text-with-img-bar-{{ section.id }} .image-div img{
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    /* Block width */
+    {%- for item in section.blocks -%}
+      #img_div-{{ item.id }}{
+        width: 100%;
+        max-width: {{ item.settings.img_width }}px;
+        height: {{ item.settings.img_height }}px;
+      }
+    {%- endfor -%}
+
+    /* Image bar layout */
+    #text-with-img-bar-{{ section.id }} .images-bar{
+       display: flex;
+      flex-wrap: wrap;
+      /* gap: 40px; */
+      justify-content: space-between;
+      width: 100%;
+      max-width: 500px;
+      margin: 50px auto;
+
+    }
+
+    /* =========================
+     RESPONSIVE FIX ONLY
+  ========================= */
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+
+
+
+    #text-with-img-bar-{{ section.id }} .rt{
+      margin-top: 2.5rem;
+      margin-bottom: 3.5rem;
+      line-height: 1.5;
+    }
+
+
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+
+
+
+    #text-with-img-bar-{{ section.id }} .title{
+      font-size: 38px;
+    }
+
+    #text-with-img-bar-{{ section.id }} .rt{
+      font-size: 14px;
+      margin-top: 2rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    {% comment %} {%- for item in section.blocks -%}
+      #img_div-{{ item.id }}{
+        max-width: 48%;
+        height: auto;
+      }
+    {%- endfor -%} {% endcomment %}
+
+  }
+
+  /* Small Mobile */
+  @media (max-width: 480px) {
+
+    #text-with-img-bar-{{ section.id }} .title{
+      font-size: 34px;
+    }
+
+    #text-with-img-bar-{{ section.id }} .rt{
+      font-size: 14px;
+    }
+
+    #text-with-img-bar-{{ section.id }} .images-bar{
+      gap: 40px;
+      justify-content:center;
+    }
+
+    {%- for item in section.blocks -%}
+      #img_div-{{ item.id }}{
+       max-width: 50px;
+       height: 60px;
+      }
+    {%- endfor -%}
+
+  }
+</style>
+
+<div id="text-with-img-bar-{{ section.id }}">
+  <div class="text-with-img-bar-wrapper page-width">
+    <h1 class="title">{{ section.settings.title }}</h1>
+
+    <div class="rt">{{ section.settings.Paragraph }}</div>
+
+    <div class="images-bar">
+      {%- for item in section.blocks -%}
+        <div id="img_div-{{ item.id }}" class="image-div">
+          <img src="{{ item.settings.image | image_url }}">
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Text with Image Bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Content Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Title Settings"
+    },
+    {
+      "type": "text",
+      "label": "Enter Title",
+      "id": "title"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title Size",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Title Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "select",
+      "id": "title_transform",
+      "label": "Title Transform",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "uppercase", "label": "Uppercase" },
+        { "value": "capitalize", "label": "Capitalize" }
+      ],
+      "default": "none"
+    },
+
+    {
+      "type": "header",
+      "content": "Paragraph Settings"
+    },
+    {
+      "type": "richtext",
+      "label": "Enter Text",
+      "id": "Paragraph"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#555555"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text Size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "text_weight",
+      "label": "Text Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "select",
+      "id": "text_transform",
+      "label": "Text Transform",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "uppercase", "label": "Uppercase" },
+        { "value": "capitalize", "label": "Capitalize" }
+      ],
+      "default": "none"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "image_block",
+      "name": "Image Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "img_width",
+          "label": "Image Width",
+          "min": 50,
+          "max": 500,
+          "step": 10,
+          "default": 200,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "img_height",
+          "label": "Image Height",
+          "min": 50,
+          "max": 500,
+          "step": 10,
+          "default": 200,
+          "unit": "px"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text with Image Bar"
+    }
+  ]
+}
+{% endschema %}

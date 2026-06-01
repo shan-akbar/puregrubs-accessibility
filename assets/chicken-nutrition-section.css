@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
+@font-face {
+    font-family: Noto_Sans_Condensed;
+    src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-Condensed.ttf?v=1777189104');
+}
+
+@font-face {
+    font-family: Noto_Sans_Condensed_bold;
+    src: url('https://cdn.shopify.com/s/files/1/0954/7926/7646/files/NotoSans-ExtraCondensedExtraBold.ttf?v=1777383522');
+}
+
+.chicken-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* Layout */
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+
+.chicken-nutrition-heading {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    text-align: center;
+    font-family: Noto_Sans_Condensed_bold;
+    line-height: normal;
+    line-height: 40px;
+}
+
+/* Feature Columns */
+.features {
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Feature Box */
+.feature {
+    display: flex;
+    flex-direction: column;
+}
+
+.feature p {
+    font-family: "Noto Sans", sans-serif;
+}
+
+.chicken-section .feature h4 {
+    font-family: Noto_Sans_Condensed_bold;
+}
+
+.chicken-section .btn {
+    padding: 8px 28px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: .3s;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Button */
+.chicken-section .btn-wrapper {
+    margin-top: 40px;
+
+}
+
+.btn-wrapper .btn{
+    font-family: "Noto Sans", sans-serif;
+}
+
+.center-image{
+    position: relative;
+}
+
+.arrow-image{
+    position: absolute;
+}
+
+.top-left{
+    left: 0;
+    top: 45px;
+    transform: rotate(-135deg);
+}
+
+.top-right{
+    right: 0;
+    top: 45px;
+}
+
+.bottom-left{
+    bottom: 54px;
+    left: 0;
+    transform: rotate(-190deg);
+}
+
+.bottom-right{
+    bottom: 54px;
+    right: 0;
+    transform: rotate(45deg);
+}
+
+/* =========================================
+     RESPONSIVE DESIGN LOGIC
+     ========================================= */
+
+/* Tablet Layout (max-width: 990px) */
+@media screen and (max-width: 990px) {
+    .content-wrapper {
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .arrow-image{
+        display: none;
+    }
+
+    .center-image {
+        order: -1;
+        max-width: 100%;
+        flex-basis: 100%;
+        margin-bottom: 20px;
+    }
+
+
+    .features {
+        width: 45%;
+    }
+
+    .features.left .feature,
+    .features.right .feature {
+        text-align: center;
+        align-items: center;
+    }
+
+    .feature p {
+        text-align: center;
+    }
+}
+
+/* Mobile Layout (max-width: 768px) */
+@media screen and (max-width: 768px) {
+    .chicken-section {
+        padding: 50px 15px;
+    }
+
+    .chicken-nutrition-heading {
+        /* Automatically scale down heading */
+        line-height: 1.2;
+        margin-bottom: 30px;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        /* Stack entirely vertically */
+        gap: 30px;
+    }
+
+    /* Make features full width */
+    .features {
+        width: 100%;
+    }
+}

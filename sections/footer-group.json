@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_jTitaj": {
+          "type": "link_list",
+          "settings": {
+            "heading": "",
+            "menu": "footer-menu"
+          }
+        },
+        "brand_information_MFcnRk": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": true
+          }
+        }
+      },
+      "block_order": [
+        "link_list_jTitaj",
+        "brand_information_MFcnRk"
+      ],
+      "settings": {
+        "color_scheme": "scheme-ef3a8b8d-395d-4a2a-a652-56db2db94b3f",
+        "footer_text": "#Puregrubs",
+        "footer_text_color": "#ffffff",
+        "footer_text_size": 14,
+        "footer_text_weight": "400",
+        "footer_btn_text": "Accessibility Statement",
+        "footer_btn_url": "https://puregrubs.com/pages/accessibility-statement",
+        "footer_btn_text_color": "#ffffff",
+        "footer_btn_text_size": 12,
+        "footer_btn_text_weight": "400",
+        "footer_btn_bg": "#987c68",
+        "footer_btn_hover_bg": "#7c6555",
+        "footer_btn_hover_text": "#ffffff",
+        "footer_logo": "shopify://shop_images/accessibility-icon.png",
+        "footer_logo_width": 170,
+        "newsletter_enable": false,
+        "newsletter_heading": "",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": false,
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 100
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}
