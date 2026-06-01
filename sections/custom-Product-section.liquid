@@ -177,13 +177,13 @@
   <section class="custom-product-section1 page-width ">
     <div class="custom-product-section1-wrapper">
       <div class="product-img">
-        <img src="{{ section.settings.product_image | img_url:"master"  }}" loading="lazy">
+        <img src="{{ section.settings.product_image | img_url:"master"  }}" alt="Black Soldier Fly Larvae Product, it has an image of chicken on it." loading="lazy">
       </div>
       {% comment %} offer info  {% endcomment %}
       <div class="offer-info">
         <div class="discount discount1">
           <div class="discount-img">
-            <img src="{{ section.settings.discount1_image | img_url:"master" }}">
+            <img src="{{ section.settings.discount1_image | img_url:"master" }}" alt="Recurring or subscription icon.">
           </div>
           <div class="discount-text">
             <h3>{{ section.settings.discount1_heading }}</h3>
@@ -192,7 +192,7 @@
         </div>
         <div class="discount">
           <div class="discount-img">
-            <img src="{{ section.settings.discount2_image | img_url:"master"}}" loading="lazy">
+            <img src="{{ section.settings.discount2_image | img_url:"master"}}" loading="lazy" alt="Free Shipping Truck Icon.">
           </div>
           <div class="discount-text discount-text2">
             <h3>{{ section.settings.discount2_heading }}</h3>
@@ -202,7 +202,7 @@
       </div>
       {% comment %} logo  {% endcomment %}
       <div class="offer-logo hide-content-on-mobile ">
-        <img src="{{ section.settings.logo_image | img_url:"master" }}" loading="lazy">
+        <img src="{{ section.settings.logo_image | img_url:"master" }}" loading="lazy" alt="Made in USA Badge.">
       </div>
     </div>
   </section>
@@ -215,7 +215,7 @@
         </h1>
 
         <div class="heading-img hide-content-on-mobile hide-on__desktop">
-          <img src="{{ section.settings.main-heading-img | img_url: 'master' }}">
+          <img src="{{ section.settings.main-heading-img | img_url: 'master' }}" alt="Trusted by farmers, loved by chickens.">
         </div>
 
         {% for block in section.blocks %}
@@ -238,7 +238,7 @@
         <h1 class="hide-on__mobile">
           {{ section.settings.main_heading }}
           <div class="heading-img hide-content-on-mobile">
-            <img src="{{ section.settings.main-heading-img | img_url: 'master' }}">
+            <img src="{{ section.settings.main-heading-img | img_url: 'master' }}" alt="Trusted by farmers, loved by chickens.">
           </div>
         </h1>
         <div class="hide-content-on-mobile hide-on__mobile">
@@ -256,7 +256,7 @@
                   {% if block.settings.block_image %}
                     <img
                       src="{{ block.settings.block_image | image_url: width: 200 }}"
-                      alt="{{ block.settings.block_text }}"
+                      alt="{{ block.settings.block_image.alt }}"
                     >
                   {% endif %}
                 </div>

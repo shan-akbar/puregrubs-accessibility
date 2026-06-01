@@ -15,8 +15,13 @@
     background: #987c68;
     border-radius: 100px;
   }
+
   #shopify-section-{{ section.id }} .list-social__link {
     color: #28201c !important;
+  }
+
+  #shopify-section-{{ section.id }} ul li p{
+    display: inline;
   }
 </style>
 
@@ -260,7 +265,7 @@
                           </a>
                         </div>
                         <div class="logo">
-                          <img src="{{section.settings.footer_logo | img_url:"master" }}" loading="lazy">
+                          <img src="{{section.settings.footer_logo | img_url:"master" }}" loading="lazy" alt="{{ section.settings.footer_logo.alt | escape }}">
                         </div>
                         <div class="footer__content-bottom-wrapper custom-footer__content-bottom-wrapper  {% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
                           <div class="footer__copyright caption">

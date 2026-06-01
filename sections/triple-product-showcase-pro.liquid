@@ -58,6 +58,7 @@
               <img
                 style="width:100%;max-width: {{ block.settings.logo_width }}px;"
                 src="{{ block.settings.logo | img_url: '200x' }}"
+                alt="{{ block.settings.logo.alt | escape }}"
               >
             </div>
             {% if block.settings.logo_width > min_width %}
@@ -135,6 +136,7 @@
               src="{{ section.settings.main_product_image | img_url: 'master' }}"
               class="main-image"
               style="width: {{ section.settings.image_width }}px;"
+              alt="A bowl full of meal worms, a comparison image between two brnads."
             >
           {% endif %}
         </div>
@@ -156,7 +158,7 @@
               </div>
 
               {% if block.settings.icon %}
-                <img src="{{ block.settings.icon | img_url: '50x50' }}" class="icon">
+                <img src="{{ block.settings.icon | img_url: '50x50' }}" class="icon" alt="{{ block.settings.icon.alt | escape }}">
               {% endif %}
             </div>
           {% endif %}
