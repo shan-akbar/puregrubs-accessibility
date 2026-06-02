@@ -18,6 +18,13 @@
 
   #shopify-section-{{ section.id }} .list-social__link {
     color: #28201c !important;
+    padding-top: 0;
+  }
+
+  .footer-contact__title{
+    font-family: 'Noto_Sans_Condensed_bold';
+    text-transform: uppercase;
+    font-size: 24px;
   }
 
   #shopify-section-{{ section.id }} ul li p{
@@ -161,6 +168,10 @@
       max-width: 260px !important;
     }
 
+    .footer-contact__title{
+      margin-top: 0;
+    }
+
 
     @media screen and (max-width:768px){
       .custom-footer__blocks-wrapper{
@@ -239,6 +250,8 @@
                   {%- when '@app' -%}
                     {% render block %}
                   {%- when 'text' -%}
+
+
                     <div class="footer-block__details-content rte">
                       {{ block.settings.subtext }}
                     </div>
@@ -286,9 +299,9 @@
                       {%- if settings.brand_headline != blank -%}
                         <h2 class="footer-block__heading rte">{{ settings.brand_headline }}</h2>
                       {%- endif -%}
-                      {%- if settings.brand_description != blank -%}
+                      {% comment %} {%- if settings.brand_description != blank -%}
                         <div class="rte">{{ settings.brand_description }}</div>
-                      {%- endif -%}
+                      {%- endif -%} {% endcomment %}
                       {%- if block.settings.show_social and has_social_icons -%}
                         {%- render 'social-icons', class: 'footer__list-social' -%}
                       {%- endif -%}
