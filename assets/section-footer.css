@@ -453,22 +453,20 @@
 
 .policies {
   display: inline;
+  max-width: 250px;
 }
 
 .policies li {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-}
-
-.policies li::before {
-  content: '\00B7';
-  padding: 0 0.8rem;
+  margin-right: 10px;
 }
 
 .policies li a {
   padding: 0.6rem 0;
   display: block;
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 750px) {

@@ -313,6 +313,15 @@
 
     {% sections 'header-group' %}
 
+    {% if request.page_type == 'policy' %}
+      {% section 'image-banner' %}
+      <style>
+        #MainContent{
+          padding-bottom: 30px;
+        }
+      </style>
+    {% endif %}
+
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>

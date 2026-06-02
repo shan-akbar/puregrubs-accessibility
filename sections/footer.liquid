@@ -264,19 +264,15 @@
                             {{- section.settings.footer_btn_text -}}
                           </a>
                         </div>
-                        <div class="logo">
-                          <img src="{{section.settings.footer_logo | img_url:"master" }}" loading="lazy" alt="{{ section.settings.footer_logo.alt | escape }}">
-                        </div>
-                        <div class="footer__content-bottom-wrapper custom-footer__content-bottom-wrapper  {% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
-                          <div class="footer__copyright caption">
-                            <small class="copyright__content"
-                              >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
-                            </small>
-                            <small class="copyright__content">{{ powered_by_link }}</small>
-                            {%- if section.settings.show_policy -%}
+                        {% if section.settings.footer_logo != blank %}
+                          <div class="logo">
+                            <img src="{{ section.settings.footer_logo | img_url:"master" }}" loading="lazy" alt="{{ section.settings.footer_logo.alt | escape }}">
+                          </div>
+                        {% endif %}
+                         {%- if section.settings.show_policy -%}
                               <ul class="policies list-unstyled">
                                 {%- for policy in shop.policies -%}
-                                  {%- if policy != blank -%}
+                                  {%- if policy != blank and policy.title != 'Cancellation policy' -%}
                                     <li>
                                       <small class="copyright__content"
                                         ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
@@ -286,6 +282,13 @@
                                 {%- endfor -%}
                               </ul>
                             {%- endif -%}
+                        <div class="footer__content-bottom-wrapper custom-footer__content-bottom-wrapper  {% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
+                          <div class="footer__copyright caption">
+                            <small class="copyright__content"
+                              >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
+                            </small>
+                            <small class="copyright__content">{{ powered_by_link }}</small>
+                           
                           </div>
                         </div>
                       </div>

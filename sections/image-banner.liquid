@@ -292,8 +292,13 @@
             <h2
               class="gradient-text custom-banner__heading banner__heading inline-richtext {{ block.settings.heading_size }}"
               {{ block.shopify_attributes }}
+              style="text-transform:uppercase;"
             >
+            {% if block.settings.heading != blank %}
               {{ block.settings.heading }}
+            {% else %}
+              {{ page_title }}
+            {% endif %}
             </h2>
           {%- when 'text' -%}
             <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>

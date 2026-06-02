@@ -46,7 +46,6 @@
         "footer_btn_bg": "#987c68",
         "footer_btn_hover_bg": "#7c6555",
         "footer_btn_hover_text": "#ffffff",
-        "footer_logo": "shopify://shop_images/accessibility-icon-final.png",
         "footer_logo_width": 170,
         "newsletter_enable": false,
         "newsletter_heading": "",
@@ -55,7 +54,7 @@
         "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": false,
-        "show_policy": false,
+        "show_policy": true,
         "margin_top": 0,
         "padding_top": 36,
         "padding_bottom": 100

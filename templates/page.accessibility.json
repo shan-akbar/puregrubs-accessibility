@@ -15,7 +15,7 @@
         "heading_UeEikk": {
           "type": "heading",
           "settings": {
-            "heading": "",
+            "heading": "<p>ACCESSIBILITY STATEMENT</p>",
             "heading_size": "hxl"
           }
         }
@@ -44,6 +44,9 @@
     },
     "main": {
       "type": "main-page",
+      "custom_css": [
+        "ul li p{display: inline;}"
+      ],
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
