@@ -23,6 +23,28 @@
   #shopify-section-{{ section.id }} ul li p{
     display: inline;
   }
+
+  .footer-logo__logo{
+    margin-top: 35px;
+  }
+
+  .footer-logo__logo img{
+    max-width: 120px;
+    height: auto;
+    width: 100%;
+  }
+
+  .footer-block__brandInfo{
+    max-width: 200px !important;
+  }
+
+  .footer-block__linkList{
+    max-width: 400px !important;
+  }
+
+  .custom-footer__blocks-wrapper{
+    justify-content: space-between;
+  }
 </style>
 
 {%- style -%}
@@ -45,7 +67,7 @@
        }
        .custom-footer__blocks-wrapper .footer-block:nth-child(2){
             width: 100%;
-        max-width: 300px;
+            max-width: 300px;
        }
        .custom-footer-block__details-content .list-menu__item--link {
          font-weight:700;
@@ -58,6 +80,10 @@
        .section-{{ section.id }}-padding {
          padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
          padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+       }
+
+       .footer__content-top .grid{
+        row-gap: 0 !important;
        }
 
        @media screen and (min-width: 750px) {
@@ -131,6 +157,10 @@
       width: 100%;
     } 
 
+    .footer-block__contact{
+      max-width: 260px !important;
+    }
+
 
     @media screen and (max-width:768px){
       .custom-footer__blocks-wrapper{
@@ -194,7 +224,7 @@
           >
             {%- for block in section.blocks -%}
               <div
-                class="footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                class="{% if block.type == 'link_list' %}footer-block__linkList{% endif %} {% if block.type == 'brand_information' %}footer-block__brandInfo{% endif %} {% if block.type == 'contact' %}footer-block__contact{% endif %} footer-block grid__item{% if block.type == 'link_list' %} footer-block--menu{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 {{ block.shopify_attributes }}
                 {% if settings.animations_reveal_on_scroll %}
                   data-cascade
@@ -226,6 +256,11 @@
                           </li>
                         {%- endfor -%}
                       </ul>
+                    {%- endif -%}
+                    {%- if block.settings.footer_logo != blank %}
+                      <div class="footer-logo__logo">
+                        {{ block.settings.footer_logo | image_url: width: block.settings.footer_logo.width | image_tag }}
+                      </div>
                     {%- endif -%}
                   {%- when 'brand_information' -%}
                     <div class="footer-block__brand-info custom-footer-block__brand-info">
@@ -314,6 +349,22 @@
                         {{ 'image' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
                       {%- endif -%}
                     </div>
+                    {%- when 'contact' -%}
+                      <div class="footer-contact__info">
+                        <p class="footer-contact__title"><strong>Contact Us</strong></p>
+                        {% if block.settings.email != blank %}
+                          <div class="footer-contact__email">
+                            <strong>Email:</strong> {{ block.settings.email }}
+                          </div>
+                        {% endif %}
+
+                        {% if block.settings.address != blank %}
+                          <div class="footer-contact__address">
+                            <strong>Address:</strong> {{ block.settings.address }}
+                          </div>
+                        {% endif %}
+
+                      </div>
                 {%- endcase -%}
               </div>
             {%- endfor -%}
@@ -473,6 +524,23 @@
       "type": "@app"
     },
     {
+      "type": "contact",
+      "limit": 1,
+      "name": "Contact Info",
+      "settings": [
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "address",
+          "label": "Address"
+        }
+      ]
+    },
+    {
       "type": "link_list",
       "name": "t:sections.footer.blocks.link_list.name",
       "settings": [
@@ -487,6 +555,11 @@
           "id": "menu",
           "default": "footer",
           "label": "t:sections.footer.blocks.link_list.settings.menu.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "footer_logo",
+          "label": "Footer Logo"
         }
       ]
     },

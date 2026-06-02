@@ -18,7 +18,15 @@
           "type": "link_list",
           "settings": {
             "heading": "",
-            "menu": "footer-menu"
+            "menu": "footer-menu",
+            "footer_logo": "shopify://shop_images/LOGO_NEGATIVE_FOOTER.png"
+          }
+        },
+        "contact_wUAXgW": {
+          "type": "contact",
+          "settings": {
+            "email": "support@puregrubs.com",
+            "address": "11161 E State Rd 70STE 110 PMB 2017Lakewood Ranch Florida 34202"
           }
         },
         "brand_information_MFcnRk": {
@@ -30,6 +38,7 @@
       },
       "block_order": [
         "link_list_jTitaj",
+        "contact_wUAXgW",
         "brand_information_MFcnRk"
       ],
       "settings": {
@@ -57,7 +66,7 @@
         "show_policy": true,
         "margin_top": 0,
         "padding_top": 36,
-        "padding_bottom": 100
+        "padding_bottom": 0
       }
     }
   },
